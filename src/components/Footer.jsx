@@ -216,9 +216,7 @@ export default function Footer({ onOpenBooking }) {
             © 2026 Saru's Fashion Studio. All Rights Reserved. Kondapur & Moti Nagar, Hyderabad.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-            <span>Built with</span>
-            <Heart size={13} style={{ color: 'var(--accent-gold)', fill: 'var(--accent-gold)' }} />
-            <span>for KERNA Web Challenge</span>
+            <span>Built by KERNA</span>
           </div>
         </div>
 
