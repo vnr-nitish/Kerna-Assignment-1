@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Clock, Check, X, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -71,6 +71,17 @@ const CORE_SERVICES = [
 
 export default function ServicesSection({ onSelectService }) {
   const [activeModalService, setActiveModalService] = useState(null);
+
+  useEffect(() => {
+    if (activeModalService) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeModalService]);
 
   return (
     <section id="services" className="section-padding" style={{ position: 'relative' }}>
@@ -176,26 +187,28 @@ export default function ServicesSection({ onSelectService }) {
         <div style={{
           position: 'fixed',
           inset: 0,
-          zIndex: 200,
-          background: 'rgba(5, 15, 12, 0.88)',
-          backdropFilter: 'blur(12px)',
+          zIndex: 10000,
+          background: 'rgba(4, 29, 33, 0.95)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '1.5rem'
+          padding: '1.5rem',
+          overflow: 'hidden'
         }}>
           <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="glass-panel-gold" 
             style={{
               maxWidth: '620px',
               width: '100%',
-              maxHeight: '90vh',
+              maxHeight: '80vh',
               overflowY: 'auto',
               padding: '2rem',
               position: 'relative',
-              boxShadow: '0 30px 60px rgba(0,0,0,0.85)'
+              boxShadow: '0 30px 60px rgba(0,0,0,0.95)'
             }}
           >
             <button 

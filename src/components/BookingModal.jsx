@@ -5,8 +5,8 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    service: 'Designer Saree Blouse',
-    fittingType: 'Studio Visit (Kondapur)',
+    service: 'Curated Fabrics',
+    fittingType: 'Studio Visit - Kondapur Branch',
     preferredDate: '',
     preferredTime: '11:00 AM - 01:00 PM',
     notes: ''
@@ -14,12 +14,31 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
 
   const [submitted, setSubmitted] = useState(false);
 
+  // Freeze background scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     if (customSpec) {
+      let matchedService = formData.service;
+      const raw = (customSpec.silhouette || '').toLowerCase();
+      if (raw.includes('fabric')) matchedService = 'Curated Fabrics';
+      else if (raw.includes('lehenga')) matchedService = 'Designer Lehengas';
+      else if (raw.includes('saree')) matchedService = 'Designer Sarees';
+      else if (raw.includes('blouse')) matchedService = 'Bridal Blouses';
+
       setFormData(prev => ({
         ...prev,
-        service: customSpec.silhouette || prev.service,
-        notes: `Fabric: ${customSpec.fabric || ''} | Embroidery: ${customSpec.embroidery || ''} | Timeline: ${customSpec.timeline || ''} | Estimate: ${customSpec.estimatedPrice || ''}`
+        service: matchedService,
+        notes: customSpec.fabric ? `Fabric: ${customSpec.fabric || ''} | Embroidery: ${customSpec.embroidery || ''} | Timeline: ${customSpec.timeline || ''} | Estimate: ${customSpec.estimatedPrice || ''}` : prev.notes
       }));
     }
   }, [customSpec]);
@@ -32,7 +51,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Hello Saru's Fashion Studio! I would like to book a fitting consultation.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Service:* ${formData.service}\n*Fitting Preference:* ${formData.fittingType}\n*Preferred Date:* ${formData.preferredDate}\n*Time:* ${formData.preferredTime}\n${formData.notes ? `*Custom Specs:* ${formData.notes}` : ''}`;
+    const text = `Hello Saru's Fashion Studio! I would like to book a fitting consultation.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Service:* ${formData.service}\n*Fitting Location:* ${formData.fittingType}\n*Preferred Date:* ${formData.preferredDate}\n*Time:* ${formData.preferredTime}\n${formData.notes ? `*Custom Specs:* ${formData.notes}` : ''}`;
     const url = `https://wa.me/919876543210?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
@@ -41,22 +60,24 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
     <div style={{
       position: 'fixed',
       inset: 0,
-      zIndex: 250,
-      background: 'rgba(5, 15, 12, 0.9)',
-      backdropFilter: 'blur(16px)',
+      zIndex: 10000,
+      background: 'rgba(4, 29, 33, 0.95)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '1.5rem'
+      padding: '1.5rem',
+      overflow: 'hidden'
     }}>
       <div className="glass-panel-gold" style={{
         maxWidth: '560px',
         width: '100%',
-        maxHeight: '92vh',
+        maxHeight: '80vh',
         overflowY: 'auto',
         padding: '2.25rem',
         position: 'relative',
-        boxShadow: '0 35px 70px rgba(0,0,0,0.85)'
+        boxShadow: '0 35px 70px rgba(0,0,0,0.95), 0 0 30px rgba(0, 107, 110, 0.4)'
       }}>
         
         {/* Close Button */}
@@ -80,7 +101,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
             <span className="subheading" style={{ marginBottom: '0.2rem' }}>Fitting & Consultation</span>
             <h3 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '0.5rem' }}>Book Your Studio Appointment</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.75rem' }}>
-              Visit our boutique in Kondapur, Hyderabad for a personalized 1-on-1 style session and precise 18-point measurement mapping.
+              Select your preferred branch for a personalized 1-on-1 style session and precise 18-point measurement mapping.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
@@ -150,10 +171,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                       fontSize: '0.92rem'
                     }}
                   >
-                    <option value="Designer Saree Blouse">Designer Saree Blouse</option>
-                    <option value="Bridal Lehenga Couture">Bridal Lehenga Couture</option>
-                    <option value="Indo-Western & Fusion">Indo-Western & Fusion</option>
-                    <option value="Precision Alterations">Precision Alterations</option>
+                    <option value="Curated Fabrics">Curated Fabrics</option>
+                    <option value="Designer Lehengas">Designer Lehengas</option>
+                    <option value="Designer Sarees">Designer Sarees</option>
+                    <option value="Bridal Blouses">Bridal Blouses</option>
                   </select>
                 </div>
               </div>
@@ -208,54 +229,49 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
 
               <div>
                 <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
-                  Fitting Location Mode
+                  Fitting Location & Branch
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                  {['Studio Visit (Kondapur)', 'Doorstep Measurement'].map((loc) => (
-                    <button
-                      type="button"
-                      key={loc}
-                      onClick={() => setFormData({...formData, fittingType: loc})}
-                      style={{
-                        padding: '0.65rem 0.75rem',
-                        fontSize: '0.82rem',
-                        borderRadius: 'var(--radius-sm)',
-                        transition: 'var(--transition)',
-                        background: formData.fittingType === loc ? 'rgba(212,175,55,0.15)' : 'rgba(0,0,0,0.3)',
-                        borderColor: formData.fittingType === loc ? 'var(--accent-gold)' : 'var(--border-subtle)',
-                        borderStyle: 'solid',
-                        borderWidth: '1px',
-                        color: formData.fittingType === loc ? '#fff' : 'var(--text-muted)'
-                      }}
-                    >
-                      {loc}
-                    </button>
-                  ))}
-                </div>
+                <select
+                  value={formData.fittingType}
+                  onChange={(e) => setFormData({...formData, fittingType: e.target.value})}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    background: 'rgba(10,27,21,0.95)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: 'var(--radius-sm)',
+                    color: '#fff',
+                    outline: 'none',
+                    fontSize: '0.92rem'
+                  }}
+                >
+                  <option value="Studio Visit - Kondapur Branch">Studio Visit - Kondapur Branch</option>
+                  <option value="Studio Visit - Moti Nagar Branch">Studio Visit - Moti Nagar Branch</option>
+                  <option value="Home Visit - Doorstep Measurement">Home Visit - Doorstep Measurement</option>
+                </select>
               </div>
 
-              {formData.notes && (
-                <div>
-                  <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
-                    Custom Design Specifications
-                  </label>
-                  <textarea 
-                    rows={2}
-                    value={formData.notes}
-                    onChange={(e) => setFormData({...formData, notes: e.target.value})}
-                    style={{
-                      width: '100%',
-                      padding: '0.65rem 0.9rem',
-                      background: 'rgba(0,0,0,0.4)',
-                      border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-sm)',
-                      color: 'var(--accent-gold-light)',
-                      outline: 'none',
-                      fontSize: '0.82rem'
-                    }}
-                  />
-                </div>
-              )}
+              <div>
+                <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                  Custom Design Specifications & Notes
+                </label>
+                <textarea 
+                  rows={2}
+                  placeholder="e.g. Preferred Fabric: Silk | Embroidery: Maggam Work | Timeline: 7 Days | Estimate: ₹5,000"
+                  value={formData.notes}
+                  onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                  style={{
+                    width: '100%',
+                    padding: '0.65rem 0.9rem',
+                    background: 'rgba(0,0,0,0.4)',
+                    border: '1px solid var(--border-subtle)',
+                    borderRadius: 'var(--radius-sm)',
+                    color: 'var(--accent-gold-light)',
+                    outline: 'none',
+                    fontSize: '0.82rem'
+                  }}
+                />
+              </div>
 
               <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <button type="submit" className="btn btn-gold" style={{ padding: '0.85rem' }}>

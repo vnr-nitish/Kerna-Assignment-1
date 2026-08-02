@@ -1,18 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, Calendar, Menu, X, Sparkles } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Phone, Calendar, Menu, X, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const linkRefs = {
+    about: useRef(null),
+    services: useRef(null),
+    gallery: useRef(null),
+    estimator: useRef(null),
+    testimonials: useRef(null),
+    contact: useRef(null)
+  };
+
+  const [indicatorWidth, setIndicatorWidth] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
+
+      // Section scroll position detector
+      const sections = ['about', 'services', 'gallery', 'estimator', 'testimonials', 'contact'];
+      const scrollPosition = window.scrollY + 220;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sectionId = sections[i];
+        const el = document.getElementById(sectionId);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sectionId);
+          break;
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Update exact pixel width of line ending at the last letter of active link
+  useEffect(() => {
+    const activeEl = linkRefs[activeSection]?.current;
+    if (activeEl) {
+      const exactRightEdge = activeEl.offsetLeft + activeEl.offsetWidth;
+      setIndicatorWidth(exactRightEdge);
+    }
+  }, [activeSection]);
 
   return (
     <motion.header 
@@ -24,165 +60,292 @@ export default function Navbar({ onOpenBooking }) {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 100,
-        transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(10, 27, 21, 0.95)' : 'rgba(10, 27, 21, 0.6)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: scrolled ? '1px solid rgba(212, 175, 55, 0.2)' : '1px solid rgba(255, 255, 255, 0.05)',
-        padding: scrolled ? '0.7rem 0' : '1.1rem 0'
+        width: '100%',
+        zIndex: 1000,
+        padding: '0.85rem 0',
+        background: scrolled ? 'rgba(4, 29, 33, 0.95)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+        transition: 'all 0.3s ease'
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'nowrap', gap: '1rem' }}>
-        
-        {/* Brand Logo & Studio Locations */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
-          <div style={{
-            width: '38px',
-            height: '38px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #d4af37 0%, #8a6c17 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#0a1b15',
-            fontWeight: '700',
-            fontSize: '1.15rem',
-            fontFamily: 'var(--font-serif)',
-            boxShadow: '0 0 12px rgba(212, 175, 55, 0.35)',
-            flexShrink: 0
-          }}>
-            S
-          </div>
+      <div 
+        className="container" 
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '1rem',
+          width: '100%'
+        }}
+      >
+        {/* 1. Unboxed Clean Brand Logo (Far Left) */}
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none', flexShrink: 0 }}>
+          <img 
+            src="/logo.jpg" 
+            alt="Saru's Fashion Studio Logo" 
+            style={{
+              width: '42px',
+              height: '42px',
+              borderRadius: '6px',
+              objectFit: 'cover'
+            }} 
+          />
           <div style={{ whiteSpace: 'nowrap' }}>
-            <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', fontWeight: '700', letterSpacing: '0.02em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
+            <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: '700', letterSpacing: '0.02em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
               Saru's <span style={{ color: 'var(--accent-gold)' }}>Fashion Studio</span>
-            </div>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.12em', color: 'var(--accent-gold-light)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-              <span>📍 Kondapur</span>
-              <span style={{ opacity: 0.5 }}>•</span>
-              <span>Moti Nagar</span>
             </div>
           </div>
         </a>
 
-        {/* Desktop Navigation - Single Line Strictly */}
-        <nav style={{ display: 'none', alignItems: 'center', gap: '1.4rem', whiteSpace: 'nowrap', flexShrink: 1 }} className="desktop-nav">
-          <a href="#about" className="nav-link">Our Story</a>
-          <a href="#services" className="nav-link">4 Core Services</a>
-          <a href="#gallery" className="nav-link">Studio Work</a>
-          <a href="#estimator" className="nav-link" style={{ color: 'var(--accent-gold-light)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-            <Sparkles size={13} /> Style Estimator
-          </a>
-          <a href="#trust" className="nav-link">Experience</a>
-          <a href="#contact" className="nav-link">Locations</a>
-        </nav>
-
-        {/* Action Controls - Single Line Strictly */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0, whiteSpace: 'nowrap' }}>
-          
-          {/* Phone Number - Protected Single Line */}
-          <a 
-            href="tel:+919876543210" 
+        {/* 2. Desktop Pill Navigation Bar (Desktop Only > 1024px) */}
+        <div 
+          className="desktop-pill-nav"
+          style={{
+            alignItems: 'center',
+            gap: '0.75rem',
+            background: 'rgba(4, 29, 33, 0.92)',
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
+            border: '1px solid var(--border-gold)',
+            borderRadius: '9999px',
+            padding: '0.4rem 0.45rem 0.4rem 1.1rem',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+            flexShrink: 0,
+            position: 'relative'
+          }}
+        >
+          {/* Desktop Nav Links with Exact Letter Progress Line */}
+          <nav 
             style={{ 
-              display: 'none', 
+              display: 'flex', 
               alignItems: 'center', 
-              gap: '0.4rem', 
-              fontSize: '0.82rem', 
-              color: 'var(--text-secondary)',
-              padding: '0.45rem 0.85rem',
+              gap: '0.65rem', 
+              whiteSpace: 'nowrap',
+              position: 'relative',
+              paddingBottom: '0.15rem'
+            }} 
+          >
+            <a ref={linkRefs.about} href="#about" className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>About</a>
+            <a ref={linkRefs.services} href="#services" className={`nav-link ${activeSection === 'services' ? 'active' : ''}`}>Core Services</a>
+            <a ref={linkRefs.gallery} href="#gallery" className={`nav-link ${activeSection === 'gallery' ? 'active' : ''}`}>Gallery</a>
+            <a ref={linkRefs.estimator} href="#estimator" className={`nav-link ${activeSection === 'estimator' ? 'active' : ''}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+              <Sparkles size={13} /> Style Estimator
+            </a>
+            <a ref={linkRefs.testimonials} href="#testimonials" className={`nav-link ${activeSection === 'testimonials' ? 'active' : ''}`}>Experience</a>
+            <a ref={linkRefs.contact} href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}>Contact</a>
+
+            {/* Glowing Active Progress Bar strictly ending at final letter of active word */}
+            <div 
+              style={{
+                position: 'absolute',
+                bottom: '-2px',
+                left: 0,
+                height: '2.5px',
+                width: indicatorWidth > 0 ? `${indicatorWidth}px` : '18%',
+                background: 'linear-gradient(90deg, #d4af37 0%, #ebd68d 50%, #008b8f 100%)',
+                boxShadow: '0 0 10px rgba(212, 175, 55, 0.95)',
+                borderRadius: '9999px',
+                transition: 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+            />
+          </nav>
+
+          {/* Desktop Phone */}
+          <a 
+            href="tel:+919989017733" 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.35rem', 
+              fontSize: '0.8rem', 
+              color: 'var(--text-primary)',
+              padding: '0.38rem 0.75rem',
               borderRadius: 'var(--radius-full)',
               border: '1px solid var(--border-gold)',
-              background: 'rgba(212, 175, 55, 0.06)',
+              background: 'rgba(212, 175, 55, 0.08)',
               whiteSpace: 'nowrap',
-              flexShrink: 0
+              fontFamily: 'var(--font-display)',
+              fontWeight: '600'
             }} 
-            className="desktop-phone"
           >
-            <Phone size={13} style={{ color: 'var(--accent-gold)' }} />
-            <span style={{ fontWeight: '600', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>+91 98765 43210</span>
+            <Phone size={12} style={{ color: 'var(--accent-gold)' }} />
+            <span>+91 99890 17733</span>
           </a>
 
+          {/* Book Appointment Button */}
           <button 
             onClick={onOpenBooking} 
             className="btn btn-gold" 
             style={{ 
-              padding: '0.55rem 1.15rem', 
-              fontSize: '0.84rem',
+              padding: '0.45rem 1rem', 
+              fontSize: '0.82rem',
               whiteSpace: 'nowrap',
-              flexShrink: 0
+              boxShadow: '0 4px 15px rgba(212, 175, 55, 0.35)'
             }}
           >
-            <Calendar size={14} />
-            <span>Book Consultation</span>
+            <Calendar size={13} />
+            <span>Book Appointment</span>
+          </button>
+        </div>
+
+        {/* 3. Mobile Header Actions (Mobile Devices < 1024px) */}
+        <div className="mobile-header-actions" style={{ alignItems: 'center', gap: '0.65rem' }}>
+          <button 
+            onClick={onOpenBooking} 
+            className="btn btn-gold" 
+            style={{ 
+              padding: '0.45rem 0.85rem', 
+              fontSize: '0.78rem',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            <Calendar size={13} />
+            <span>Book</span>
           </button>
 
-          {/* Mobile Drawer Trigger */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            style={{ color: 'var(--text-primary)', padding: '0.35rem', display: 'flex', flexShrink: 0 }}
-            className="mobile-toggle"
-            aria-label="Toggle menu"
+            style={{ 
+              color: '#fff', 
+              padding: '0.5rem', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(4, 29, 33, 0.95)',
+              border: '1px solid var(--border-gold)',
+              borderRadius: '50%',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.4)',
+              cursor: 'pointer'
+            }}
+            aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-
         </div>
 
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Structured Full-Screen Glass Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <motion.div 
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -15 }}
           style={{
-            position: 'absolute',
-            top: '100%',
+            position: 'fixed',
+            top: '65px',
             left: 0,
             right: 0,
-            background: 'rgba(10, 27, 21, 0.98)',
+            bottom: 0,
+            background: 'rgba(4, 29, 33, 0.98)',
             backdropFilter: 'blur(20px)',
-            borderBottom: '1px solid var(--border-gold)',
+            WebkitBackdropFilter: 'blur(20px)',
             padding: '1.75rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.1rem',
-            boxShadow: '0 20px 30px rgba(0,0,0,0.6)'
+            justifyContent: 'space-between',
+            boxShadow: '0 25px 60px rgba(0,0,0,0.95)',
+            zIndex: 999,
+            overflowY: 'auto'
           }}
         >
-          <a href="#about" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '1rem', color: 'var(--text-primary)' }}>Our Story</a>
-          <a href="#services" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '1rem', color: 'var(--text-primary)' }}>4 Core Services</a>
-          <a href="#gallery" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '1rem', color: 'var(--text-primary)' }}>Collections & Portfolio</a>
-          <a href="#estimator" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '1rem', color: 'var(--accent-gold)' }}>✨ Interactive Style Estimator</a>
-          <a href="#trust" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '1rem', color: 'var(--text-primary)' }}>Studio Locations & Reviews</a>
-          <a href="#contact" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '1rem', color: 'var(--text-primary)' }}>Kondapur & Moti Nagar Addresses</a>
-          
-          <div style={{ paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <MapPin size={14} style={{ color: 'var(--accent-gold)' }} /> Studios in Kondapur & Moti Nagar
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold)', fontWeight: '700', marginBottom: '0.5rem' }}>
+              Studio Navigation
             </div>
-            <a href="tel:+919876543210" style={{ fontSize: '0.88rem', color: 'var(--accent-gold-light)', display: 'flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap' }}>
-              <Phone size={14} /> Call Studio: +91 98765 43210
+
+            {[
+              { id: 'about', label: 'About Us' },
+              { id: 'services', label: '4 Core Services' },
+              { id: 'gallery', label: 'Gallery & Portfolio' },
+              { id: 'estimator', label: '✨ Style Estimator & Customizer' },
+              { id: 'testimonials', label: 'Client Fitting Experience' },
+              { id: 'contact', label: 'Contact & Locations' }
+            ].map((item) => (
+              <a 
+                key={item.id}
+                href={`#${item.id}`} 
+                onClick={() => setMobileMenuOpen(false)} 
+                style={{ 
+                  fontSize: '1.05rem', 
+                  color: activeSection === item.id ? 'var(--accent-gold)' : 'var(--text-primary)',
+                  fontWeight: activeSection === item.id ? '700' : '500',
+                  padding: '0.75rem 1rem',
+                  borderRadius: 'var(--radius-md)',
+                  background: activeSection === item.id ? 'rgba(212, 175, 55, 0.12)' : 'rgba(255,255,255,0.03)',
+                  border: activeSection === item.id ? '1px solid var(--border-gold)' : '1px solid var(--border-subtle)',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <span>{item.label}</span>
+                {activeSection === item.id && <span style={{ color: 'var(--accent-gold)', fontSize: '0.85rem' }}>●</span>}
+              </a>
+            ))}
+          </div>
+          
+          <div style={{ paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            <a 
+              href="tel:+919989017733" 
+              style={{ 
+                fontSize: '0.95rem', 
+                color: 'var(--accent-gold-light)', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                gap: '0.5rem', 
+                fontFamily: 'var(--font-display)', 
+                fontWeight: '600',
+                padding: '0.85rem',
+                borderRadius: 'var(--radius-md)',
+                background: 'rgba(212, 175, 55, 0.08)',
+                border: '1px solid var(--border-gold)',
+                textDecoration: 'none'
+              }}
+            >
+              <Phone size={16} style={{ color: 'var(--accent-gold)' }} />
+              <span>Call Studio: +91 99890 17733</span>
             </a>
+
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBooking();
+              }}
+              className="btn btn-gold"
+              style={{ width: '100%', justifyContent: 'center', padding: '0.9rem' }}
+            >
+              <Calendar size={16} />
+              <span>Book Fitting Consultation</span>
+            </button>
           </div>
         </motion.div>
       )}
 
       <style>{`
         .nav-link {
-          font-size: 0.86rem;
+          font-size: 0.84rem;
           color: var(--text-secondary);
           transition: var(--transition);
           font-weight: 500;
           white-space: nowrap;
+          padding: 0.35rem 0.65rem;
+          border-radius: var(--radius-full);
+          text-decoration: none;
         }
-        .nav-link:hover {
-          color: var(--accent-gold);
+        .nav-link:hover, .nav-link.active {
+          color: var(--accent-gold) !important;
+          background: rgba(212, 175, 55, 0.1);
         }
+        .desktop-pill-nav { display: none !important; }
+        .mobile-header-actions { display: flex !important; }
+
         @media (min-width: 1024px) {
-          .desktop-nav { display: flex !important; }
-          .desktop-phone { display: flex !important; }
-          .mobile-toggle { display: none !important; }
+          .desktop-pill-nav { display: flex !important; }
+          .mobile-header-actions { display: none !important; }
         }
       `}</style>
     </motion.header>

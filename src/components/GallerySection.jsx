@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Eye, Sparkles, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Eye, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const STUDIO_COLLECTIONS = [
@@ -91,18 +91,44 @@ const STUDIO_COLLECTIONS = [
 
 export default function GallerySection({ onOpenBooking }) {
   const [filter, setFilter] = useState('all');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const filteredItems = filter === 'all' 
     ? STUDIO_COLLECTIONS 
     : STUDIO_COLLECTIONS.filter(item => item.category === filter);
+
+  // Freeze background scrolling when Lightbox is open
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedIndex]);
+
+  const handlePrev = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((prev) => (prev === 0 ? filteredItems.length - 1 : prev - 1));
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((prev) => (prev === filteredItems.length - 1 ? 0 : prev + 1));
+    }
+  };
+
+  const activeItem = selectedIndex !== null ? filteredItems[selectedIndex] : null;
 
   return (
     <section id="gallery" className="section-padding" style={{ background: 'var(--bg-secondary)', position: 'relative' }}>
       <div className="container">
         
         {/* Header */}
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem auto' }}>
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2.5rem auto' }}>
           <span className="subheading">Studio Collections Showcase</span>
           <h2 className="heading-md">
             Authentic Studio Work by <span className="text-gold">Saru's Fashion Studio.</span>
@@ -118,7 +144,7 @@ export default function GallerySection({ onOpenBooking }) {
           justifyContent: 'center',
           gap: '0.75rem',
           flexWrap: 'wrap',
-          marginBottom: '3rem'
+          marginBottom: '2.5rem'
         }}>
           {[
             { id: 'all', label: 'All Collections' },
@@ -129,7 +155,10 @@ export default function GallerySection({ onOpenBooking }) {
           ].map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setFilter(cat.id)}
+              onClick={() => {
+                setFilter(cat.id);
+                setSelectedIndex(null);
+              }}
               style={{
                 padding: '0.5rem 1.25rem',
                 borderRadius: 'var(--radius-full)',
@@ -167,7 +196,7 @@ export default function GallerySection({ onOpenBooking }) {
                 cursor: 'pointer',
                 position: 'relative'
               }}
-              onClick={() => setSelectedImage(item)}
+              onClick={() => setSelectedIndex(idx)}
             >
               <div style={{ height: '340px', overflow: 'hidden', position: 'relative' }}>
                 <img 
@@ -227,80 +256,151 @@ export default function GallerySection({ onOpenBooking }) {
 
       </div>
 
-      {/* Image Preview Modal */}
-      {selectedImage && (
+      {/* Clean Uncropped Lightbox Photo Viewer with In-Box Navigation Arrows */}
+      {activeItem && (
         <div style={{
           position: 'fixed',
           inset: 0,
-          zIndex: 300,
-          background: 'rgba(5, 15, 12, 0.92)',
-          backdropFilter: 'blur(16px)',
+          zIndex: 10000,
+          background: 'rgba(4, 29, 33, 0.96)',
+          backdropFilter: 'blur(18px)',
+          WebkitBackdropFilter: 'blur(18px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '1.5rem'
+          padding: '1.5rem',
+          overflow: 'hidden'
         }}>
+          
+          {/* Main Uncropped Lightbox Photo Box */}
           <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
+            key={activeItem.id}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className="glass-panel-gold" 
             style={{
-              maxWidth: '750px',
+              maxWidth: '850px',
               width: '100%',
+              maxHeight: '85vh',
               overflow: 'hidden',
               position: 'relative',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(12, 1fr)',
-              boxShadow: '0 30px 60px rgba(0,0,0,0.9)'
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '1.25rem',
+              boxShadow: '0 30px 70px rgba(0,0,0,0.95)',
+              background: 'rgba(10, 27, 21, 0.95)'
             }}
           >
+            {/* Close Button Inside Pop-up Box */}
             <button 
-              onClick={() => setSelectedImage(null)}
+              onClick={() => setSelectedIndex(null)}
               style={{
                 position: 'absolute',
                 top: '1rem',
                 right: '1rem',
-                zIndex: 10,
+                zIndex: 310,
                 color: '#fff',
-                background: 'rgba(0,0,0,0.6)',
-                padding: '0.4rem',
-                borderRadius: '50%'
+                background: 'rgba(255,255,255,0.12)',
+                border: '1px solid var(--border-gold)',
+                padding: '0.45rem',
+                borderRadius: '50%',
+                cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
               }}
             >
               <X size={20} />
             </button>
 
-            <div style={{ gridColumn: 'span 12', '@media(min-width: 768px)': { gridColumn: 'span 7' } }}>
+            {/* Uncropped High-Res Studio Photo Container with In-Box Navigation Overlay */}
+            <div style={{
+              width: '100%',
+              maxHeight: '70vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 'var(--radius-sm)',
+              overflow: 'hidden',
+              background: '#071410',
+              position: 'relative'
+            }}>
+              {/* Previous Arrow Button INSIDE Pop-up Box */}
+              <button
+                onClick={handlePrev}
+                style={{
+                  position: 'absolute',
+                  left: '0.85rem',
+                  zIndex: 310,
+                  color: 'var(--accent-gold)',
+                  background: 'rgba(10,27,21,0.85)',
+                  border: '1px solid var(--border-gold)',
+                  padding: '0.65rem',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.7)',
+                  backdropFilter: 'blur(8px)'
+                }}
+              >
+                <ChevronLeft size={22} />
+              </button>
+
+              {/* Next Arrow Button INSIDE Pop-up Box */}
+              <button
+                onClick={handleNext}
+                style={{
+                  position: 'absolute',
+                  right: '0.85rem',
+                  zIndex: 310,
+                  color: 'var(--accent-gold)',
+                  background: 'rgba(10,27,21,0.85)',
+                  border: '1px solid var(--border-gold)',
+                  padding: '0.65rem',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.7)',
+                  backdropFilter: 'blur(8px)'
+                }}
+              >
+                <ChevronRight size={22} />
+              </button>
+
               <img 
-                src={selectedImage.image} 
-                alt={selectedImage.title} 
-                style={{ width: '100%', height: '420px', objectFit: 'cover' }}
+                src={activeItem.image} 
+                alt={activeItem.title} 
+                style={{ 
+                  maxWidth: '100%', 
+                  maxHeight: '70vh', 
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                  borderRadius: 'var(--radius-sm)'
+                }}
               />
             </div>
 
-            <div style={{ gridColumn: 'span 12', '@media(min-width: 768px)': { gridColumn: 'span 5' }, padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <span className="subheading">Studio Creation</span>
-              <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '0.75rem' }}>{selectedImage.title}</h3>
-              
-              <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold-light)', marginBottom: '1.25rem', fontWeight: '600' }}>
-                ✨ {selectedImage.craftDetails}
+            {/* Clean Minimal Caption Banner */}
+            <div style={{
+              width: '100%',
+              paddingTop: '0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '0.5rem'
+            }}>
+              <div>
+                <h3 style={{ fontSize: '1.2rem', color: '#fff', fontWeight: '600', marginBottom: '0.15rem' }}>
+                  {activeItem.title}
+                </h3>
+                <div style={{ fontSize: '0.78rem', color: 'var(--accent-gold-light)' }}>
+                  {activeItem.craftDetails}
+                </div>
               </div>
-
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                Crafted at Saru's Fashion Studio with custom measurements and handwork fitting trial.
-              </p>
-
-              <button 
-                onClick={() => {
-                  setSelectedImage(null);
-                  onOpenBooking();
-                }}
-                className="btn btn-gold"
-                style={{ width: '100%' }}
-              >
-                <Sparkles size={16} />
-                <span>Recreate This Outfit</span>
-              </button>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                {selectedIndex + 1} of {filteredItems.length}
+              </div>
             </div>
 
           </motion.div>
@@ -310,3 +410,4 @@ export default function GallerySection({ onOpenBooking }) {
     </section>
   );
 }
+

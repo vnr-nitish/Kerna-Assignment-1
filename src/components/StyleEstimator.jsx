@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Sparkles, Clock, Calendar, Check, Sliders } from 'lucide-react';
+import { Sparkles, Clock, Calendar, Check, Sliders, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ThreeDStudioCanvas from './ThreeDStudioCanvas';
 
 const SILHOUETTES = [
   { id: 'blouse', name: 'Bridal Blouse', basePrice: 1800, baseDays: 6 },
@@ -29,7 +30,10 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
   const [selectedEmbroidery, setSelectedEmbroidery] = useState(EMBROIDERIES[1]);
   const [expressTimeline, setExpressTimeline] = useState(false);
 
-  const rawPrice = Math.round((selectedSilhouette.basePrice * selectedFabric.priceMultiplier) + selectedEmbroidery.priceAdd);
+  const expressMultiplier = expressTimeline ? 1.25 : 1.0;
+  const baseCalcPrice = (selectedSilhouette.basePrice * selectedFabric.priceMultiplier) + selectedEmbroidery.priceAdd;
+  const rawPrice = Math.round(baseCalcPrice * expressMultiplier);
+
   const minPrice = Math.round(rawPrice * 0.95);
   const maxPrice = Math.round(rawPrice * 1.15);
   
@@ -53,7 +57,7 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3.5rem auto' }}>
           <span className="subheading" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-            <Sparkles size={14} /> Co-Design Experience
+            <Sparkles size={14} /> Style Estimator
           </span>
           <h2 className="heading-md">
             Interactive Outfit & <span className="text-gold">Fitting Estimator.</span>
@@ -176,12 +180,72 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
 
           </div>
 
-          {/* Real-time Summary Card */}
+          {/* Real-time Summary Card & 3D Visualizer */}
           <div style={{ gridColumn: 'span 12', '@media(min-width: 992px)': { gridColumn: 'span 5' } }} className="estimator-summary">
+            
+            {/* Interactive 360-Degree Revolving 3D Dress Mannequin Canvas */}
+            <div className="glass-panel" style={{
+              padding: '0.75rem',
+              marginBottom: '1rem',
+              border: '1px solid var(--border-gold)',
+              background: 'rgba(4, 29, 33, 0.95)',
+              textAlign: 'center',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{ height: '240px', width: '100%', borderRadius: 'var(--radius-sm)', overflow: 'hidden', position: 'relative' }}>
+                <ThreeDStudioCanvas 
+                  interactive={true} 
+                  fabricColor={
+                    selectedFabric.id === 'silk' ? 0xd4af37 :
+                    selectedFabric.id === 'velvet' ? 0x800020 :
+                    selectedFabric.id === 'organza' ? 0x006b6e : 0xb8860b
+                  }
+                  accentColor={0xf5d77f}
+                />
+                
+                {/* Live Spec Overlay */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(to top, rgba(4,29,33,0.95) 0%, rgba(4,29,33,0) 100%)',
+                  padding: '1.25rem 0.75rem 0.5rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-end',
+                  fontSize: '0.75rem',
+                  color: '#fff',
+                  pointerEvents: 'none'
+                }}>
+                  <div style={{ textAlign: 'left' }}>
+                    <div style={{ fontFamily: 'var(--font-serif)', fontSize: '0.95rem', fontWeight: '700', color: 'var(--accent-gold-light)' }}>
+                      {selectedSilhouette.name}
+                    </div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                      {selectedFabric.name} • {selectedEmbroidery.name.split(' ')[0]}
+                    </div>
+                  </div>
+
+                  <div style={{
+                    background: 'rgba(212, 175, 55, 0.2)',
+                    border: '1px solid var(--border-gold)',
+                    padding: '0.2rem 0.55rem',
+                    borderRadius: 'var(--radius-full)',
+                    color: 'var(--accent-gold)',
+                    fontWeight: '700',
+                    fontFamily: 'var(--font-display)'
+                  }}>
+                    {days} Days
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <motion.div 
               layout
               className="glass-panel-gold" 
-              style={{ padding: '2rem', boxShadow: '0 25px 50px rgba(0,0,0,0.6)' }}
+              style={{ padding: '1.75rem', boxShadow: '0 25px 50px rgba(0,0,0,0.6)' }}
             >
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem', color: 'var(--accent-gold)' }}>
@@ -234,7 +298,7 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
               {/* Estimated Price Range */}
               <div style={{ marginBottom: '1.75rem', textAlign: 'center' }}>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Estimated Investment Range</div>
-                <div style={{ fontSize: '2.1rem', fontFamily: 'var(--font-serif)', color: 'var(--accent-gold)', fontWeight: '700' }}>
+                <div style={{ fontSize: '2.1rem', fontFamily: 'var(--font-display)', color: 'var(--accent-gold)', fontWeight: '700', letterSpacing: '0.02em' }}>
                   ₹{minPrice.toLocaleString()} – ₹{maxPrice.toLocaleString()}
                 </div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>*Exact quote finalized during in-person studio trial.</div>
