@@ -391,17 +391,19 @@ export default function Navbar({ onOpenBooking }) {
         .desktop-pill-nav { display: none !important; }
         .mobile-header-actions { display: flex !important; }
 
+        @media (max-width: 1023px) {
+          .mobile-nav-book {
+            display: none !important;
+          }
+
+          .mobile-header-actions {
+            margin-left: auto;
+            justify-content: flex-end;
+          }
+        }
+
         @supports (-webkit-touch-callout: none) {
           @media (max-width: 768px) {
-            .mobile-nav-book {
-              display: none !important;
-            }
-
-            .mobile-header-actions {
-              margin-left: auto;
-              justify-content: flex-end;
-            }
-
             .brand-logo-text {
               font-size: clamp(0.88rem, 3.2vw, 1.05rem) !important;
             }
