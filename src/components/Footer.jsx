@@ -194,6 +194,60 @@ export default function Footer({ onOpenBooking }) {
         </div>
 
       </div>
+
+      <style>{`
+        @supports (-webkit-touch-callout: none) {
+          @media (max-width: 768px) {
+            #contact {
+              padding-top: 1.75rem !important;
+              padding-bottom: 0.75rem !important;
+            }
+
+            #contact .glass-panel-gold {
+              padding: 1.25rem 1rem !important;
+              margin-bottom: 1.5rem !important;
+            }
+
+            #contact .glass-panel-gold h3 {
+              font-size: 1.35rem !important;
+              line-height: 1.2 !important;
+            }
+
+            #contact .glass-panel-gold > div:last-child {
+              gap: 0.6rem !important;
+            }
+
+            #contact .footer-equalized-grid {
+              gap: 1.25rem !important;
+              margin-bottom: 1rem !important;
+            }
+
+            #contact .footer-equalized-grid > div {
+              margin-bottom: 0 !important;
+            }
+
+            #contact .footer-equalized-grid h4 {
+              margin-bottom: 0.65rem !important;
+            }
+
+            #contact .footer-equalized-grid p {
+              margin-bottom: 0.8rem !important;
+            }
+
+            #contact .footer-equalized-grid a,
+            #contact .footer-equalized-grid div {
+              line-height: 1.45;
+            }
+
+            #contact > div > div:last-child {
+              padding-top: 0.9rem !important;
+              gap: 0.35rem !important;
+              justify-content: center !important;
+              text-align: center;
+            }
+          }
+        }
+      `}</style>
     </footer>
   );
 }

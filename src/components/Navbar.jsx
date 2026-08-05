@@ -236,6 +236,7 @@ export default function Navbar({ onOpenBooking }) {
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             padding: 'calc(5.25rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))',
+            height: '100dvh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-start',
@@ -358,7 +359,17 @@ export default function Navbar({ onOpenBooking }) {
             }
 
             .mobile-menu-drawer {
-              padding-top: calc(4.75rem + env(safe-area-inset-top)) !important;
+              padding-top: calc(4.1rem + env(safe-area-inset-top)) !important;
+              gap: 1rem !important;
+            }
+
+            .mobile-menu-drawer a {
+              font-size: 0.98rem !important;
+              padding: 0.7rem 0.9rem !important;
+            }
+
+            .mobile-menu-drawer > div:first-child {
+              gap: 0.5rem !important;
             }
           }
         }
