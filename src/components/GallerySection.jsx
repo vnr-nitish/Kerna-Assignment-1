@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Eye, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Eye, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const STUDIO_COLLECTIONS = [
@@ -92,6 +92,7 @@ const STUDIO_COLLECTIONS = [
 export default function GallerySection({ onOpenBooking }) {
   const [filter, setFilter] = useState('all');
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   const filteredItems = filter === 'all' 
     ? STUDIO_COLLECTIONS 
