@@ -75,7 +75,7 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
         }}>
           
           {/* Controls Column */}
-          <div style={{ gridColumn: 'span 12', '@media(min-width: 992px)': { gridColumn: 'span 7' } }} className="estimator-ctrls">
+          <div style={{ gridColumn: 'span 12' }} className="estimator-ctrls">
             
             {/* Step 1: Silhouette */}
             <div style={{ marginBottom: '2rem' }}>
@@ -180,7 +180,7 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
           </div>
 
           {/* Real-time Summary Card & 3D Visualizer */}
-          <div style={{ gridColumn: 'span 12', '@media(min-width: 992px)': { gridColumn: 'span 5' } }} className="estimator-summary">
+          <div style={{ gridColumn: 'span 12' }} className="estimator-summary">
             
             {/* High-Fashion Interactive Outfit Photo Preview Card */}
             <div className="glass-panel img-tint-gold" style={{
