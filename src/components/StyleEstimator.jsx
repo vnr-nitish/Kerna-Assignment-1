@@ -345,16 +345,78 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
           gap: 0.75rem;
         }
 
+        .estimator-ctrls,
+        .estimator-summary {
+          min-width: 0;
+        }
+
+        .estimator-summary {
+          width: 100%;
+        }
+
+        .estimator-summary > .glass-panel-gold,
+        .estimator-summary > .glass-panel {
+          min-width: 0;
+        }
+
         @media (max-width: 640px) {
+          #estimator .container {
+            padding-left: 0.9rem !important;
+            padding-right: 0.9rem !important;
+          }
+
+          #estimator > div > div {
+            gap: 1.35rem !important;
+          }
+
+          #estimator .heading-md {
+            font-size: 1.55rem !important;
+          }
+
+          #estimator p {
+            font-size: 0.95rem !important;
+          }
+
           .estimator-step-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 0.5rem !important;
           }
+
+          .estimator-ctrls,
+          .estimator-summary {
+            grid-column: span 12 !important;
+          }
+
+          .estimator-ctrls > div,
+          .estimator-summary > div,
+          .estimator-summary > motion-div {
+            margin-bottom: 1rem;
+          }
+
           .estimator-step-grid button {
             padding: 0.65rem 0.5rem !important;
           }
+
           .estimator-step-grid button div {
             font-size: 0.82rem !important;
+          }
+
+          .estimator-summary > .glass-panel img {
+            height: 180px !important;
+          }
+
+          .estimator-summary > .glass-panel-gold {
+            padding: 1.15rem !important;
+          }
+
+          .estimator-summary > .glass-panel-gold > div[style*='font-size: 2.1rem'] {
+            font-size: 1.55rem !important;
+            line-height: 1.15;
+          }
+
+          .estimator-summary button.btn {
+            font-size: 0.92rem !important;
+            padding: 0.85rem 0.9rem !important;
           }
         }
 

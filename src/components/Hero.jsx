@@ -120,6 +120,32 @@ export default function Hero({ onOpenBooking }) {
           display: block;
         }
 
+        @media (max-width: 768px) {
+          .hero-text-col {
+            grid-column: span 12 !important;
+            order: 2;
+          }
+
+          .hero-visual-col {
+            grid-column: span 12 !important;
+            order: 1;
+          }
+
+          .hero-img-container {
+            margin-bottom: 0.75rem;
+          }
+
+          .hero-img-wrapper {
+            border-radius: 18px !important;
+          }
+
+          .hero-img-responsive {
+            max-height: 230px;
+            object-fit: contain;
+            object-position: center top;
+          }
+        }
+
         @media (min-width: 992px) {
           .hero-text-col { grid-column: span 6 !important; }
           .hero-visual-col { grid-column: span 6 !important; }
