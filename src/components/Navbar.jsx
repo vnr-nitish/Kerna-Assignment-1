@@ -246,6 +246,30 @@ export default function Navbar({ onOpenBooking }) {
             overflowY: 'auto'
           }}
         >
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close mobile menu"
+            style={{
+              position: 'absolute',
+              top: '0.9rem',
+              right: '0.9rem',
+              width: '42px',
+              height: '42px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: '#ffffff',
+              border: '1px solid var(--border-gold)',
+              borderRadius: '50%',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
+              color: 'var(--text-primary)',
+              zIndex: 2010,
+              cursor: 'pointer'
+            }}
+          >
+            <X size={22} />
+          </button>
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', minHeight: 0 }}>
             <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.5rem' }}>
               Studio Navigation
