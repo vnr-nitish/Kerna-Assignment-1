@@ -84,7 +84,7 @@ export default function ServicesSection({ onSelectService }) {
   }, [activeModalService]);
 
   return (
-    <section id="services" className="section-padding" style={{ position: 'relative' }}>
+    <section id="services" className="section-padding" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', position: 'relative' }}>
       <div className="container">
         
         {/* Header */}

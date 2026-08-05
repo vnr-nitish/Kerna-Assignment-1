@@ -16,8 +16,6 @@ export default function Navbar({ onOpenBooking }) {
     contact: useRef(null)
   };
 
-  const [indicatorWidth, setIndicatorWidth] = useState(0);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
@@ -41,12 +39,15 @@ export default function Navbar({ onOpenBooking }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Update exact pixel width of line ending at the last letter of active link
+  const [indicatorLeft, setIndicatorLeft] = useState(0);
+  const [indicatorWidth, setIndicatorWidth] = useState(0);
+
+  // Update exact pixel left position and width of line under active link
   useEffect(() => {
     const activeEl = linkRefs[activeSection]?.current;
     if (activeEl) {
-      const exactRightEdge = activeEl.offsetLeft + activeEl.offsetWidth;
-      setIndicatorWidth(exactRightEdge);
+      setIndicatorLeft(activeEl.offsetLeft);
+      setIndicatorWidth(activeEl.offsetWidth);
     }
   }, [activeSection]);
 
@@ -134,18 +135,18 @@ export default function Navbar({ onOpenBooking }) {
             </a>
             <a ref={linkRefs.contact} href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}>Contact</a>
 
-            {/* Glowing Active Progress Bar strictly ending at final letter of active word */}
+            {/* Smooth Gliding Active Progress Bar under active link */}
             <div 
               style={{
                 position: 'absolute',
                 bottom: '-2px',
-                left: 0,
+                left: `${indicatorLeft}px`,
                 height: '2.5px',
-                width: indicatorWidth > 0 ? `${indicatorWidth}px` : '18%',
+                width: indicatorWidth > 0 ? `${indicatorWidth}px` : '0px',
                 background: 'linear-gradient(90deg, #c5a059 0%, #d8b877 50%, #0d3b36 100%)',
                 boxShadow: '0 0 8px rgba(197, 160, 89, 0.6)',
                 borderRadius: '9999px',
-                transition: 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                transition: 'left 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
             />
           </nav>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Clock, Calendar, Check, Sliders, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
-import ThreeDStudioCanvas from './ThreeDStudioCanvas';
 
 const SILHOUETTES = [
   { id: 'blouse', name: 'Bridal Blouse', basePrice: 1800, baseDays: 6 },
@@ -183,26 +182,44 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
           {/* Real-time Summary Card & 3D Visualizer */}
           <div style={{ gridColumn: 'span 12', '@media(min-width: 992px)': { gridColumn: 'span 5' } }} className="estimator-summary">
             
-            {/* Interactive 360-Degree Revolving 3D Dress Mannequin Canvas */}
-            <div className="glass-panel" style={{
-              padding: '0.75rem',
+            {/* High-Fashion Interactive Outfit Photo Preview Card */}
+            <div className="glass-panel img-tint-gold" style={{
+              padding: '0.5rem',
               marginBottom: '1rem',
               border: '1px solid var(--border-gold)',
-              background: '#f7f6f2',
-              textAlign: 'center',
+              background: '#ffffff',
               borderRadius: 'var(--radius-md)',
-              boxShadow: 'var(--shadow-lux)'
+              boxShadow: 'var(--shadow-lux)',
+              overflow: 'hidden'
             }}>
               <div style={{ height: '240px', width: '100%', borderRadius: 'var(--radius-sm)', overflow: 'hidden', position: 'relative' }}>
-                <ThreeDStudioCanvas 
-                  interactive={true} 
-                  fabricColor={
-                    selectedFabric.id === 'silk' ? 0xc5a059 :
-                    selectedFabric.id === 'velvet' ? 0x800020 :
-                    selectedFabric.id === 'organza' ? 0x0d3b36 : 0xb8860b
+                <img 
+                  src={
+                    selectedSilhouette.id === 'fabric' ? '/Services/A.jpg' :
+                    selectedSilhouette.id === 'lehenga' ? '/Services/B.jpg' :
+                    selectedSilhouette.id === 'saree' ? '/Services/C.jpg' : '/Services/D.jpg'
                   }
-                  accentColor={0xc5a059}
+                  alt={selectedSilhouette.name}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'all 0.5s ease' }}
                 />
+
+                {/* Top Category Badge */}
+                <div style={{
+                  position: 'absolute',
+                  top: '0.85rem',
+                  left: '0.85rem',
+                  background: 'rgba(255, 255, 255, 0.92)',
+                  backdropFilter: 'blur(8px)',
+                  padding: '0.3rem 0.75rem',
+                  borderRadius: 'var(--radius-full)',
+                  fontSize: '0.72rem',
+                  color: 'var(--accent-gold-dark)',
+                  fontWeight: '600',
+                  border: '1px solid var(--border-gold)',
+                  zIndex: 3
+                }}>
+                  {selectedSilhouette.name}
+                </div>
                 
                 {/* Live Spec Overlay */}
                 <div style={{
@@ -210,31 +227,30 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  background: 'linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%)',
-                  padding: '1.25rem 0.75rem 0.5rem',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)',
+                  padding: '1.25rem 0.85rem 0.65rem',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'flex-end',
-                  fontSize: '0.75rem',
-                  color: 'var(--text-primary)',
-                  pointerEvents: 'none'
+                  color: '#ffffff',
+                  zIndex: 3
                 }}>
                   <div style={{ textAlign: 'left' }}>
-                    <div style={{ fontFamily: 'var(--font-serif)', fontSize: '0.95rem', fontWeight: '700', color: 'var(--accent-gold-dark)' }}>
-                      {selectedSilhouette.name}
+                    <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.05rem', fontWeight: '700', color: '#ffffff' }}>
+                      {selectedFabric.name}
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                      {selectedFabric.name} • {selectedEmbroidery.name.split(' ')[0]}
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.85)' }}>
+                      {selectedEmbroidery.name.split(' ')[0]} Work
                     </div>
                   </div>
 
                   <div style={{
-                    background: 'rgba(197, 160, 89, 0.15)',
-                    border: '1px solid var(--border-gold)',
-                    padding: '0.2rem 0.55rem',
+                    background: 'rgba(197, 160, 89, 0.9)',
+                    color: '#ffffff',
+                    padding: '0.25rem 0.65rem',
                     borderRadius: 'var(--radius-full)',
-                    color: 'var(--accent-gold-dark)',
                     fontWeight: '700',
+                    fontSize: '0.75rem',
                     fontFamily: 'var(--font-display)'
                   }}>
                     {days} Days

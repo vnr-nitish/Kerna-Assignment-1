@@ -124,7 +124,7 @@ export default function GallerySection({ onOpenBooking }) {
   const activeItem = selectedIndex !== null ? filteredItems[selectedIndex] : null;
 
   return (
-    <section id="gallery" className="section-padding" style={{ background: 'var(--bg-secondary)', position: 'relative' }}>
+    <section id="gallery" className="section-padding" style={{ background: '#ffffff', borderTop: '1px solid var(--border-gold)', position: 'relative' }}>
       <div className="container">
         
         {/* Header */}
