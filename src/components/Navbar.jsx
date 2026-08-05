@@ -6,6 +6,7 @@ export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const scrollPositionRef = useRef(0);
 
   const linkRefs = {
     about: useRef(null),
@@ -41,13 +42,40 @@ export default function Navbar({ onOpenBooking }) {
 
   useEffect(() => {
     if (mobileMenuOpen) {
+      scrollPositionRef.current = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPositionRef.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
+      const savedScrollPosition = scrollPositionRef.current;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      if (savedScrollPosition) {
+        window.scrollTo(0, savedScrollPosition);
+      }
     }
 
     return () => {
+      const savedScrollPosition = scrollPositionRef.current;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      if (savedScrollPosition) {
+        window.scrollTo(0, savedScrollPosition);
+      }
     };
   }, [mobileMenuOpen]);
 
