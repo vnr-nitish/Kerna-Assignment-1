@@ -45,9 +45,9 @@ export default function Navbar({ onOpenBooking }) {
   // Update exact pixel left position and width of line under active link
   useEffect(() => {
     const activeEl = linkRefs[activeSection]?.current;
-    if (activeEl) {
-      setIndicatorLeft(activeEl.offsetLeft);
-      setIndicatorWidth(activeEl.offsetWidth);
+    if (activeEl && typeof activeEl.offsetLeft === 'number') {
+      setIndicatorLeft(activeEl.offsetLeft || 0);
+      setIndicatorWidth(activeEl.offsetWidth || 0);
     }
   }, [activeSection]);
 
