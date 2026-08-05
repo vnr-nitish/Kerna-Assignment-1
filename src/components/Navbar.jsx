@@ -171,7 +171,7 @@ export default function Navbar({ onOpenBooking }) {
         <div className="mobile-header-actions" style={{ alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <button 
             onClick={onOpenBooking} 
-            className="btn btn-gold" 
+            className="btn btn-gold mobile-nav-book"
             style={{ 
               padding: '0.42rem 0.8rem', 
               fontSize: '0.78rem',
@@ -323,6 +323,27 @@ export default function Navbar({ onOpenBooking }) {
         }
         .desktop-pill-nav { display: none !important; }
         .mobile-header-actions { display: flex !important; }
+
+        @supports (-webkit-touch-callout: none) {
+          @media (max-width: 768px) {
+            .mobile-nav-book {
+              display: none !important;
+            }
+
+            .mobile-header-actions {
+              margin-left: auto;
+              justify-content: flex-end;
+            }
+
+            .brand-logo-text {
+              font-size: clamp(0.88rem, 3.2vw, 1.05rem) !important;
+            }
+
+            .container {
+              gap: 0.65rem !important;
+            }
+          }
+        }
 
         @media (min-width: 1024px) {
           .desktop-pill-nav { display: flex !important; }
