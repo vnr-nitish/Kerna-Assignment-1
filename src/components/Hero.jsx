@@ -178,9 +178,9 @@ export default function Hero({ onOpenBooking }) {
           .hero-img-wrapper {
             width: auto !important;
             background: transparent !important;
-            box-shadow: none !important;
-            overflow: visible !important;
-            border-radius: 0 !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important;
+            overflow: hidden !important;
+            border-radius: 24px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
