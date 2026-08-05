@@ -200,12 +200,16 @@ export default function Footer({ onOpenBooking }) {
           @media (max-width: 768px) {
             #contact {
               padding-top: 1.75rem !important;
-              padding-bottom: 0.75rem !important;
+              padding-bottom: 0 !important;
+            }
+
+            #contact .container {
+              padding-bottom: 0 !important;
             }
 
             #contact .glass-panel-gold {
-              padding: 1.25rem 1rem !important;
-              margin-bottom: 1.5rem !important;
+              padding: 1.1rem 1rem !important;
+              margin-bottom: 1.1rem !important;
             }
 
             #contact .glass-panel-gold h3 {
@@ -218,8 +222,8 @@ export default function Footer({ onOpenBooking }) {
             }
 
             #contact .footer-equalized-grid {
-              gap: 1.25rem !important;
-              margin-bottom: 1rem !important;
+              gap: 1.1rem !important;
+              margin-bottom: 0.25rem !important;
             }
 
             #contact .footer-equalized-grid > div {
@@ -240,10 +244,15 @@ export default function Footer({ onOpenBooking }) {
             }
 
             #contact > div > div:last-child {
-              padding-top: 0.9rem !important;
-              gap: 0.35rem !important;
+              padding-top: 0.35rem !important;
+              padding-bottom: 0 !important;
+              gap: 0.2rem !important;
               justify-content: center !important;
               text-align: center;
+            }
+
+            #contact > div > div:last-child > div {
+              line-height: 1.35 !important;
             }
           }
         }
