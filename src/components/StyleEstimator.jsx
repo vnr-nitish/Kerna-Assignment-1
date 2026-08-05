@@ -82,21 +82,21 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
               <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold-dark)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '700', marginBottom: '0.75rem' }}>
                 Step 1: Choose Core Service
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
                 {SILHOUETTES.map((sil) => (
                   <button
                     key={sil.id}
                     onClick={() => setSelectedSilhouette(sil)}
                     className="glass-panel"
                     style={{
-                      padding: '1rem',
+                      padding: '0.85rem 0.75rem',
                       textAlign: 'left',
                       transition: 'var(--transition)',
                       borderColor: selectedSilhouette.id === sil.id ? 'var(--accent-gold)' : 'var(--border-subtle)',
                       background: selectedSilhouette.id === sil.id ? 'rgba(197,160,89,0.12)' : '#ffffff'
                     }}
                   >
-                    <div style={{ fontSize: '0.95rem', fontWeight: '600', color: selectedSilhouette.id === sil.id ? 'var(--accent-gold-dark)' : 'var(--text-primary)' }}>
+                    <div style={{ fontSize: '0.9rem', fontWeight: '600', color: selectedSilhouette.id === sil.id ? 'var(--accent-gold-dark)' : 'var(--text-primary)' }}>
                       {sil.name}
                     </div>
                   </button>
@@ -109,21 +109,21 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
               <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold-dark)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '700', marginBottom: '0.75rem' }}>
                 Step 2: Fabric Selection
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
                 {FABRICS.map((fab) => (
                   <button
                     key={fab.id}
                     onClick={() => setSelectedFabric(fab)}
                     className="glass-panel"
                     style={{
-                      padding: '0.9rem',
+                      padding: '0.85rem 0.75rem',
                       textAlign: 'left',
                       transition: 'var(--transition)',
                       borderColor: selectedFabric.id === fab.id ? 'var(--accent-gold)' : 'var(--border-subtle)',
                       background: selectedFabric.id === fab.id ? 'rgba(197,160,89,0.12)' : '#ffffff'
                     }}
                   >
-                    <div style={{ fontSize: '0.9rem', fontWeight: '600', color: selectedFabric.id === fab.id ? 'var(--accent-gold-dark)' : 'var(--text-primary)' }}>
+                    <div style={{ fontSize: '0.88rem', fontWeight: '600', color: selectedFabric.id === fab.id ? 'var(--accent-gold-dark)' : 'var(--text-primary)' }}>
                       {fab.name}
                     </div>
                   </button>

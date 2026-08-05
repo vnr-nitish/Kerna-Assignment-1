@@ -284,7 +284,9 @@ section {
   }
 
   /* Prevent overflow on small touchscreens */
-  body, html {
+  body, html, #root {
+    width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
   }

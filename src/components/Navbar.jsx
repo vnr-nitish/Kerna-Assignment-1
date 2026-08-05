@@ -82,20 +82,21 @@ export default function Navbar({ onOpenBooking }) {
         }}
       >
         {/* 1. Unboxed Clean Brand Logo (Far Left) */}
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none', flexShrink: 0 }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', minWidth: 0, flexShrink: 1 }}>
           <img 
             src="/logo.jpg" 
             alt="Saru's Fashion Studio Logo" 
             style={{
-              width: '42px',
-              height: '42px',
+              width: '38px',
+              height: '38px',
               borderRadius: '6px',
               objectFit: 'cover',
+              flexShrink: 0,
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }} 
           />
-          <div style={{ whiteSpace: 'nowrap' }}>
-            <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: '700', letterSpacing: '0.02em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
+          <div style={{ minWidth: 0, overflow: 'hidden' }}>
+            <div className="brand-logo-text" style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(0.95rem, 3.5vw, 1.25rem)', fontWeight: '700', letterSpacing: '0.02em', color: 'var(--text-primary)', lineHeight: 1.1, whiteSpace: 'nowrap' }}>
               Saru's <span style={{ color: 'var(--accent-gold-dark)' }}>Fashion Studio</span>
             </div>
           </div>
@@ -167,13 +168,13 @@ export default function Navbar({ onOpenBooking }) {
         </div>
 
         {/* 3. Mobile Header Actions (Mobile Devices & Tablets < 1140px) */}
-        <div className="mobile-header-actions" style={{ alignItems: 'center', gap: '0.65rem' }}>
+        <div className="mobile-header-actions" style={{ alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <button 
             onClick={onOpenBooking} 
             className="btn btn-gold" 
             style={{ 
-              padding: '0.45rem 0.85rem', 
-              fontSize: '0.78rem',
+              padding: '0.4rem 0.75rem', 
+              fontSize: '0.76rem',
               whiteSpace: 'nowrap'
             }}
           >
@@ -185,7 +186,9 @@ export default function Navbar({ onOpenBooking }) {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
             style={{ 
               color: 'var(--text-primary)', 
-              padding: '0.5rem', 
+              width: '38px',
+              height: '38px',
+              padding: 0,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -193,11 +196,12 @@ export default function Navbar({ onOpenBooking }) {
               border: '1px solid var(--border-gold)',
               borderRadius: '50%',
               boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              flexShrink: 0
             }}
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
