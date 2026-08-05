@@ -27,6 +27,7 @@ export default function FittingJourneySection() {
 
   return (
     <section 
+      id="how-it-works-section"
       className="section-padding"
       style={{
         background: 'var(--bg-primary)',
@@ -110,6 +111,17 @@ export default function FittingJourneySection() {
           }
         }
         @media (min-width: 1024px) {
+          #how-it-works-section {
+            min-height: calc(100vh - 85px) !important;
+            display: flex !important;
+            align-items: center !important;
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+          }
+          #how-it-works-section .container {
+            width: 100% !important;
+          }
+
           .journey-grid {
             grid-template-columns: repeat(4, 1fr) !important;
             gap: 0.85rem !important;
