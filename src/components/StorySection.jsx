@@ -27,12 +27,12 @@ export default function StorySection() {
         }}>
           
           {/* Left Craftsmanship Visual (Clean Photo - No Text Overlays) */}
-          <div style={{ gridColumn: 'span 12', '@media(min-width: 992px)': { gridColumn: 'span 6' } }} className="story-vis">
-            <div className="glass-panel" style={{ padding: '0.5rem', border: '1px solid var(--border-gold)' }}>
+          <div style={{ gridColumn: 'span 12' }} className="story-vis">
+            <div className="glass-panel img-tint-teal" style={{ padding: '0.5rem', border: '1px solid var(--border-gold)', borderRadius: 'var(--radius-md)' }}>
               <img 
                 src="/Collections/8.jpeg" 
                 alt="Master Craftsmanship at Saru's Fashion Studio" 
-                style={{ borderRadius: 'var(--radius-sm)', width: '100%', height: '330px', objectFit: 'cover' }}
+                style={{ borderRadius: 'var(--radius-sm)', width: '100%', aspectRatio: '4 / 3', objectFit: 'cover', display: 'block' }}
               />
             </div>
           </div>

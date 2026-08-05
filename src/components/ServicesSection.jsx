@@ -119,7 +119,7 @@ export default function ServicesSection({ onSelectService }) {
               }}
             >
               {/* Actual Local Studio Image from /Services/ */}
-              <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
+              <div className="img-tint-teal" style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', position: 'relative' }}>
                 <img 
                   src={srv.image} 
                   alt={srv.title} 
@@ -129,14 +129,15 @@ export default function ServicesSection({ onSelectService }) {
                   position: 'absolute',
                   top: '0.85rem',
                   left: '0.85rem',
-                  background: 'rgba(10,27,21,0.85)',
+                  background: 'rgba(255, 255, 255, 0.92)',
                   backdropFilter: 'blur(8px)',
                   padding: '0.3rem 0.75rem',
                   borderRadius: 'var(--radius-full)',
                   fontSize: '0.72rem',
-                  color: 'var(--accent-gold)',
+                  color: 'var(--accent-gold-dark)',
                   fontWeight: '600',
-                  border: '1px solid rgba(212,175,55,0.3)'
+                  border: '1px solid var(--border-gold)',
+                  zIndex: 3
                 }}>
                   {srv.category}
                 </div>

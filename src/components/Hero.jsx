@@ -166,22 +166,20 @@ export default function Hero({ onOpenBooking }) {
                 pointerEvents: 'none'
               }} />
 
-              <img 
-                src="/Collections/Hero Sec.PNG" 
-                alt="Saru's Fashion Studio Hero Collection" 
-                style={{
-                  maxWidth: '100%',
-                  maxHeight: 'calc(100vh - 125px)',
-                  height: 'auto',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  borderRadius: '24px',
-                  boxShadow: '0 15px 35px rgba(0,0,0,0.12)',
-                  display: 'block',
-                  position: 'relative',
-                  zIndex: 1
-                }}
-              />
+              <div className="img-tint-gold" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 15px 35px rgba(0,0,0,0.12)', zIndex: 1 }}>
+                <img 
+                  src="/Collections/Hero Sec.PNG" 
+                  alt="Saru's Fashion Studio Hero Collection" 
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: 'calc(100vh - 125px)',
+                    height: 'auto',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }}
+                />
+              </div>
             </div>
           </motion.div>
 

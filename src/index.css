@@ -290,6 +290,36 @@ section {
   }
 }
 
+/* Contextual Subtle Image Color Tint Overlays */
+.img-tint-gold, .img-tint-teal {
+  position: relative;
+  overflow: hidden;
+}
+
+.img-tint-gold::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(197, 160, 89, 0.09) 0%, rgba(13, 59, 54, 0.04) 100%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.img-tint-teal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 59, 54, 0.09) 0%, rgba(197, 160, 89, 0.04) 100%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.img-tint-gold:hover::after, .img-tint-teal:hover::after {
+  opacity: 0.5;
+}
+
 /* Global Image Protection (Prevent Dragging & Saving Across Website) */
 img {
   -webkit-user-drag: none;

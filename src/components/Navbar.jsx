@@ -100,7 +100,7 @@ export default function Navbar({ onOpenBooking }) {
           </div>
         </a>
 
-        {/* 2. Desktop Pill Navigation Bar (Desktop Only > 1024px) */}
+        {/* 2. Desktop Pill Navigation Bar (Desktop Only > 1140px) */}
         <div 
           className="desktop-pill-nav"
           style={{
@@ -109,7 +109,7 @@ export default function Navbar({ onOpenBooking }) {
             background: '#ffffff',
             border: '1px solid var(--border-gold)',
             borderRadius: '9999px',
-            padding: '0.4rem 0.45rem 0.4rem 1.1rem',
+            padding: '0.38rem 0.45rem 0.38rem 1.1rem',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
             flexShrink: 0,
             position: 'relative'
@@ -127,12 +127,11 @@ export default function Navbar({ onOpenBooking }) {
             }} 
           >
             <a ref={linkRefs.about} href="#about" className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}>About</a>
-            <a ref={linkRefs.services} href="#services" className={`nav-link ${activeSection === 'services' ? 'active' : ''}`}>Core Services</a>
+            <a ref={linkRefs.services} href="#services" className={`nav-link ${activeSection === 'services' ? 'active' : ''}`}>Services</a>
             <a ref={linkRefs.gallery} href="#gallery" className={`nav-link ${activeSection === 'gallery' ? 'active' : ''}`}>Gallery</a>
             <a ref={linkRefs.estimator} href="#estimator" className={`nav-link ${activeSection === 'estimator' ? 'active' : ''}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-              <Sparkles size={13} /> Style Estimator
+              <Sparkles size={13} /> Customizer
             </a>
-            <a ref={linkRefs.testimonials} href="#testimonials" className={`nav-link ${activeSection === 'testimonials' ? 'active' : ''}`}>Experience</a>
             <a ref={linkRefs.contact} href="#contact" className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}>Contact</a>
 
             {/* Glowing Active Progress Bar strictly ending at final letter of active word */}
@@ -151,28 +150,6 @@ export default function Navbar({ onOpenBooking }) {
             />
           </nav>
 
-          {/* Desktop Phone */}
-          <a 
-            href="tel:+919989017733" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.35rem', 
-              fontSize: '0.8rem', 
-              color: 'var(--text-primary)',
-              padding: '0.38rem 0.75rem',
-              borderRadius: 'var(--radius-full)',
-              border: '1px solid var(--border-gold)',
-              background: 'rgba(197, 160, 89, 0.08)',
-              whiteSpace: 'nowrap',
-              fontFamily: 'var(--font-display)',
-              fontWeight: '600'
-            }} 
-          >
-            <Phone size={12} style={{ color: 'var(--accent-gold-dark)' }} />
-            <span>+91 99890 17733</span>
-          </a>
-
           {/* Book Appointment Button */}
           <button 
             onClick={onOpenBooking} 
@@ -188,7 +165,7 @@ export default function Navbar({ onOpenBooking }) {
           </button>
         </div>
 
-        {/* 3. Mobile Header Actions (Mobile Devices < 1024px) */}
+        {/* 3. Mobile Header Actions (Mobile Devices & Tablets < 1140px) */}
         <div className="mobile-header-actions" style={{ alignItems: 'center', gap: '0.65rem' }}>
           <button 
             onClick={onOpenBooking} 
@@ -336,13 +313,13 @@ export default function Navbar({ onOpenBooking }) {
           text-decoration: none;
         }
         .nav-link:hover, .nav-link.active {
-          color: var(--accent-gold) !important;
-          background: rgba(212, 175, 55, 0.1);
+          color: var(--accent-gold-dark) !important;
+          background: rgba(197, 160, 89, 0.1);
         }
         .desktop-pill-nav { display: none !important; }
         .mobile-header-actions { display: flex !important; }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1140px) {
           .desktop-pill-nav { display: flex !important; }
           .mobile-header-actions { display: none !important; }
         }

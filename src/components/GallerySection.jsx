@@ -199,7 +199,7 @@ export default function GallerySection({ onOpenBooking }) {
               }}
               onClick={() => setSelectedIndex(idx)}
             >
-              <div style={{ height: '340px', overflow: 'hidden', position: 'relative' }}>
+              <div className="img-tint-gold" style={{ width: '100%', aspectRatio: '3 / 4', overflow: 'hidden', position: 'relative' }}>
                 <img 
                   src={item.image} 
                   alt={item.title}
