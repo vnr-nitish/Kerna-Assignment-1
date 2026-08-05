@@ -63,9 +63,10 @@ export default function Navbar({ onOpenBooking }) {
         width: '100%',
         zIndex: 1000,
         padding: '0.85rem 0',
-        background: scrolled ? 'rgba(4, 29, 33, 0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+        background: scrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(255, 255, 255, 0.85)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: scrolled ? '1px solid rgba(0, 0, 0, 0.06)' : '1px solid transparent',
         transition: 'all 0.3s ease'
       }}
     >
@@ -88,12 +89,13 @@ export default function Navbar({ onOpenBooking }) {
               width: '42px',
               height: '42px',
               borderRadius: '6px',
-              objectFit: 'cover'
+              objectFit: 'cover',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
             }} 
           />
           <div style={{ whiteSpace: 'nowrap' }}>
             <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', fontWeight: '700', letterSpacing: '0.02em', color: 'var(--text-primary)', lineHeight: 1.1 }}>
-              Saru's <span style={{ color: 'var(--accent-gold)' }}>Fashion Studio</span>
+              Saru's <span style={{ color: 'var(--accent-gold-dark)' }}>Fashion Studio</span>
             </div>
           </div>
         </a>
@@ -104,13 +106,11 @@ export default function Navbar({ onOpenBooking }) {
           style={{
             alignItems: 'center',
             gap: '0.75rem',
-            background: 'rgba(4, 29, 33, 0.92)',
-            backdropFilter: 'blur(18px)',
-            WebkitBackdropFilter: 'blur(18px)',
+            background: '#ffffff',
             border: '1px solid var(--border-gold)',
             borderRadius: '9999px',
             padding: '0.4rem 0.45rem 0.4rem 1.1rem',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
             flexShrink: 0,
             position: 'relative'
           }}
@@ -143,8 +143,8 @@ export default function Navbar({ onOpenBooking }) {
                 left: 0,
                 height: '2.5px',
                 width: indicatorWidth > 0 ? `${indicatorWidth}px` : '18%',
-                background: 'linear-gradient(90deg, #d4af37 0%, #ebd68d 50%, #008b8f 100%)',
-                boxShadow: '0 0 10px rgba(212, 175, 55, 0.95)',
+                background: 'linear-gradient(90deg, #c5a059 0%, #d8b877 50%, #0d3b36 100%)',
+                boxShadow: '0 0 8px rgba(197, 160, 89, 0.6)',
                 borderRadius: '9999px',
                 transition: 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
@@ -163,13 +163,13 @@ export default function Navbar({ onOpenBooking }) {
               padding: '0.38rem 0.75rem',
               borderRadius: 'var(--radius-full)',
               border: '1px solid var(--border-gold)',
-              background: 'rgba(212, 175, 55, 0.08)',
+              background: 'rgba(197, 160, 89, 0.08)',
               whiteSpace: 'nowrap',
               fontFamily: 'var(--font-display)',
               fontWeight: '600'
             }} 
           >
-            <Phone size={12} style={{ color: 'var(--accent-gold)' }} />
+            <Phone size={12} style={{ color: 'var(--accent-gold-dark)' }} />
             <span>+91 99890 17733</span>
           </a>
 
@@ -180,8 +180,7 @@ export default function Navbar({ onOpenBooking }) {
             style={{ 
               padding: '0.45rem 1rem', 
               fontSize: '0.82rem',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 4px 15px rgba(212, 175, 55, 0.35)'
+              whiteSpace: 'nowrap'
             }}
           >
             <Calendar size={13} />
@@ -207,15 +206,15 @@ export default function Navbar({ onOpenBooking }) {
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
             style={{ 
-              color: '#fff', 
+              color: 'var(--text-primary)', 
               padding: '0.5rem', 
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: 'rgba(4, 29, 33, 0.95)',
+              background: '#ffffff',
               border: '1px solid var(--border-gold)',
               borderRadius: '50%',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.4)',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
               cursor: 'pointer'
             }}
             aria-label="Toggle mobile menu"
@@ -238,20 +237,20 @@ export default function Navbar({ onOpenBooking }) {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(4, 29, 33, 0.98)',
+            background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             padding: '1.75rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            boxShadow: '0 25px 60px rgba(0,0,0,0.95)',
+            boxShadow: '0 25px 60px rgba(0,0,0,0.15)',
             zIndex: 999,
             overflowY: 'auto'
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold)', fontWeight: '700', marginBottom: '0.5rem' }}>
+            <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.5rem' }}>
               Studio Navigation
             </div>
 
@@ -269,11 +268,11 @@ export default function Navbar({ onOpenBooking }) {
                 onClick={() => setMobileMenuOpen(false)} 
                 style={{ 
                   fontSize: '1.05rem', 
-                  color: activeSection === item.id ? 'var(--accent-gold)' : 'var(--text-primary)',
+                  color: activeSection === item.id ? 'var(--accent-gold-dark)' : 'var(--text-primary)',
                   fontWeight: activeSection === item.id ? '700' : '500',
                   padding: '0.75rem 1rem',
                   borderRadius: 'var(--radius-md)',
-                  background: activeSection === item.id ? 'rgba(212, 175, 55, 0.12)' : 'rgba(255,255,255,0.03)',
+                  background: activeSection === item.id ? 'rgba(197, 160, 89, 0.12)' : 'rgba(0,0,0,0.02)',
                   border: activeSection === item.id ? '1px solid var(--border-gold)' : '1px solid var(--border-subtle)',
                   textDecoration: 'none',
                   display: 'flex',
@@ -282,7 +281,7 @@ export default function Navbar({ onOpenBooking }) {
                 }}
               >
                 <span>{item.label}</span>
-                {activeSection === item.id && <span style={{ color: 'var(--accent-gold)', fontSize: '0.85rem' }}>●</span>}
+                {activeSection === item.id && <span style={{ color: 'var(--accent-gold-dark)', fontSize: '0.85rem' }}>●</span>}
               </a>
             ))}
           </div>
@@ -292,7 +291,7 @@ export default function Navbar({ onOpenBooking }) {
               href="tel:+919989017733" 
               style={{ 
                 fontSize: '0.95rem', 
-                color: 'var(--accent-gold-light)', 
+                color: 'var(--accent-teal)', 
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center',
@@ -301,12 +300,12 @@ export default function Navbar({ onOpenBooking }) {
                 fontWeight: '600',
                 padding: '0.85rem',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(212, 175, 55, 0.08)',
+                background: 'rgba(197, 160, 89, 0.08)',
                 border: '1px solid var(--border-gold)',
                 textDecoration: 'none'
               }}
             >
-              <Phone size={16} style={{ color: 'var(--accent-gold)' }} />
+              <Phone size={16} style={{ color: 'var(--accent-gold-dark)' }} />
               <span>Call Studio: +91 99890 17733</span>
             </a>
 

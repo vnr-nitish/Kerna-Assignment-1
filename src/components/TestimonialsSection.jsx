@@ -37,7 +37,7 @@ export default function TestimonialsSection() {
       <div className="container">
         
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
-          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold)', fontWeight: '700', marginBottom: '0.4rem' }}>
+          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.4rem' }}>
             AUTHENTIC FEEDBACK
           </div>
           <h2 style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)', color: 'var(--text-primary)', fontFamily: 'var(--font-serif)' }}>
@@ -64,21 +64,22 @@ export default function TestimonialsSection() {
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 gap: '1.5rem',
-                background: 'rgba(4, 29, 33, 0.85)',
+                background: '#ffffff',
                 border: '1px solid var(--border-gold)',
-                borderRadius: 'var(--radius-lg)'
+                borderRadius: 'var(--radius-lg)',
+                boxShadow: 'var(--shadow-lux)'
               }}
             >
               <div>
-                <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem', color: 'var(--accent-gold)' }}>
+                <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem', color: 'var(--accent-gold-dark)' }}>
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill="var(--accent-gold)" />
+                    <Star key={i} size={16} fill="var(--accent-gold)" color="var(--accent-gold)" />
                   ))}
                 </div>
 
                 <p style={{
                   fontSize: '0.9rem',
-                  color: 'var(--text-primary)',
+                  color: 'var(--text-secondary)',
                   lineHeight: 1.6,
                   fontStyle: 'italic',
                   margin: 0
@@ -99,11 +100,11 @@ export default function TestimonialsSection() {
 
                 <div style={{
                   fontSize: '0.72rem',
-                  color: 'var(--accent-gold)',
-                  padding: '0.25rem 0.6rem',
-                  borderRadius: 'var(--radius-full)',
-                  background: 'rgba(212, 175, 55, 0.1)',
+                  color: 'var(--accent-gold-dark)',
+                  background: 'rgba(197,160,89,0.1)',
                   border: '1px solid var(--border-gold)',
+                  padding: '0.25rem 0.65rem',
+                  borderRadius: 'var(--radius-full)',
                   fontWeight: '600'
                 }}>
                   {item.tag}

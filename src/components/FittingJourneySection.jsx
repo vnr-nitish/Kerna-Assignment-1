@@ -56,16 +56,17 @@ export default function FittingJourneySection() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1rem',
-                background: 'rgba(4, 29, 33, 0.85)',
+                background: '#ffffff',
                 border: '1px solid var(--border-gold)',
-                borderRadius: 'var(--radius-lg)'
+                borderRadius: 'var(--radius-lg)',
+                boxShadow: 'var(--shadow-lux)'
               }}
             >
               <div style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: '2.2rem',
                 fontWeight: '700',
-                color: 'var(--accent-gold)',
+                color: 'var(--accent-gold-dark)',
                 lineHeight: 1
               }}>
                 {step.num}
@@ -82,7 +83,7 @@ export default function FittingJourneySection() {
 
               <p style={{
                 fontSize: '0.85rem',
-                color: 'var(--text-muted)',
+                color: 'var(--text-secondary)',
                 lineHeight: 1.5,
                 margin: 0
               }}>

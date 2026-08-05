@@ -143,8 +143,8 @@ export default function ServicesSection({ onSelectService }) {
               </div>
 
               <div style={{ padding: '1.35rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <h3 style={{ fontSize: '1.25rem', color: '#fff', marginBottom: '0.5rem' }}>{srv.title}</h3>
-                <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '1.25rem', flexGrow: 1 }}>
+                <h3 style={{ fontSize: '1.25rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>{srv.title}</h3>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '1.25rem', flexGrow: 1 }}>
                   {srv.shortDesc}
                 </p>
 
@@ -155,8 +155,8 @@ export default function ServicesSection({ onSelectService }) {
                   paddingTop: '0.85rem',
                   borderTop: '1px solid var(--border-subtle)'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-                    <Clock size={13} style={{ color: 'var(--accent-gold)' }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                    <Clock size={13} style={{ color: 'var(--accent-gold-dark)' }} />
                     <span>{srv.craftTime}</span>
                   </div>
 
@@ -167,7 +167,7 @@ export default function ServicesSection({ onSelectService }) {
                       alignItems: 'center',
                       gap: '0.3rem',
                       fontSize: '0.82rem',
-                      color: 'var(--accent-gold-light)',
+                      color: 'var(--accent-gold-dark)',
                       fontWeight: '600'
                     }}
                   >
@@ -188,9 +188,9 @@ export default function ServicesSection({ onSelectService }) {
           position: 'fixed',
           inset: 0,
           zIndex: 10000,
-          background: 'rgba(4, 29, 33, 0.95)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
+          background: 'rgba(0, 0, 0, 0.65)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -208,7 +208,8 @@ export default function ServicesSection({ onSelectService }) {
               overflowY: 'auto',
               padding: '2rem',
               position: 'relative',
-              boxShadow: '0 30px 60px rgba(0,0,0,0.95)'
+              background: '#ffffff',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.25)'
             }}
           >
             <button 
@@ -220,14 +221,14 @@ export default function ServicesSection({ onSelectService }) {
                 color: 'var(--text-muted)',
                 padding: '0.4rem',
                 borderRadius: '50%',
-                background: 'rgba(255,255,255,0.05)'
+                background: 'rgba(0,0,0,0.04)'
               }}
             >
               <X size={20} />
             </button>
 
             <span className="subheading">{activeModalService.category}</span>
-            <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '0.75rem' }}>{activeModalService.title}</h3>
+            <h3 style={{ fontSize: '1.8rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>{activeModalService.title}</h3>
             
             <div style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', height: '200px', marginBottom: '1.25rem' }}>
               <img src={activeModalService.image} alt={activeModalService.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -238,11 +239,11 @@ export default function ServicesSection({ onSelectService }) {
             </p>
 
             <div style={{ marginBottom: '1.5rem' }}>
-              <div style={{ fontSize: '0.88rem', color: '#fff', fontWeight: '600', marginBottom: '0.65rem' }}>Features & Craft Process:</div>
+              <div style={{ fontSize: '0.88rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.65rem' }}>Features & Craft Process:</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {activeModalService.features.map((feat, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
-                    <Check size={15} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />
+                    <Check size={15} style={{ color: 'var(--accent-gold-dark)', flexShrink: 0 }} />
                     <span>{feat}</span>
                   </div>
                 ))}

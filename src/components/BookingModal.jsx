@@ -61,9 +61,9 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
       position: 'fixed',
       inset: 0,
       zIndex: 10000,
-      background: 'rgba(4, 29, 33, 0.95)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
+      background: 'rgba(0, 0, 0, 0.65)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -77,7 +77,8 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
         overflowY: 'auto',
         padding: '2.25rem',
         position: 'relative',
-        boxShadow: '0 35px 70px rgba(0,0,0,0.95), 0 0 30px rgba(0, 107, 110, 0.4)'
+        background: '#ffffff',
+        boxShadow: '0 25px 60px rgba(0,0,0,0.25)'
       }}>
         
         {/* Close Button */}
@@ -90,7 +91,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
             color: 'var(--text-muted)',
             padding: '0.4rem',
             borderRadius: '50%',
-            background: 'rgba(255,255,255,0.05)'
+            background: 'rgba(0,0,0,0.04)'
           }}
         >
           <X size={20} />
@@ -99,15 +100,15 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
         {!submitted ? (
           <div>
             <span className="subheading" style={{ marginBottom: '0.2rem' }}>Fitting & Consultation</span>
-            <h3 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '0.5rem' }}>Book Your Studio Appointment</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.75rem' }}>
+            <h3 style={{ fontSize: '1.75rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Book Your Studio Appointment</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '1.75rem' }}>
               Select your preferred branch for a personalized 1-on-1 style session and precise 18-point measurement mapping.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               
               <div>
-                <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                   Your Full Name *
                 </label>
                 <input 
@@ -119,10 +120,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
-                    background: 'rgba(0,0,0,0.4)',
+                    background: '#f7f6f2',
                     border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-sm)',
-                    color: '#fff',
+                    color: 'var(--text-primary)',
                     outline: 'none',
                     fontSize: '0.92rem'
                   }}
@@ -131,7 +132,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                     Phone / WhatsApp *
                   </label>
                   <input 
@@ -143,10 +144,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'rgba(0,0,0,0.4)',
+                      background: '#f7f6f2',
                       border: '1px solid var(--border-subtle)',
                       borderRadius: 'var(--radius-sm)',
-                      color: '#fff',
+                      color: 'var(--text-primary)',
                       outline: 'none',
                       fontSize: '0.92rem'
                     }}
@@ -154,7 +155,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                     Garment Requirement
                   </label>
                   <select
@@ -163,10 +164,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'rgba(10,27,21,0.95)',
+                      background: '#f7f6f2',
                       border: '1px solid var(--border-subtle)',
                       borderRadius: 'var(--radius-sm)',
-                      color: '#fff',
+                      color: 'var(--text-primary)',
                       outline: 'none',
                       fontSize: '0.92rem'
                     }}
@@ -181,7 +182,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                     Preferred Date
                   </label>
                   <input 
@@ -192,10 +193,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'rgba(0,0,0,0.4)',
+                      background: '#f7f6f2',
                       border: '1px solid var(--border-subtle)',
                       borderRadius: 'var(--radius-sm)',
-                      color: '#fff',
+                      color: 'var(--text-primary)',
                       outline: 'none',
                       fontSize: '0.92rem'
                     }}
@@ -203,7 +204,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                  <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                     Time Slot
                   </label>
                   <select
@@ -212,10 +213,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'rgba(10,27,21,0.95)',
+                      background: '#f7f6f2',
                       border: '1px solid var(--border-subtle)',
                       borderRadius: 'var(--radius-sm)',
-                      color: '#fff',
+                      color: 'var(--text-primary)',
                       outline: 'none',
                       fontSize: '0.92rem'
                     }}
@@ -228,7 +229,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
               </div>
 
               <div>
-                <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                   Fitting Location & Branch
                 </label>
                 <select
@@ -237,10 +238,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
-                    background: 'rgba(10,27,21,0.95)',
+                    background: '#f7f6f2',
                     border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-sm)',
-                    color: '#fff',
+                    color: 'var(--text-primary)',
                     outline: 'none',
                     fontSize: '0.92rem'
                   }}
@@ -252,7 +253,7 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
               </div>
 
               <div>
-                <label style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
+                <label style={{ fontSize: '0.82rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.35rem', display: 'block' }}>
                   Custom Design Specifications & Notes
                 </label>
                 <textarea 
@@ -263,10 +264,10 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                   style={{
                     width: '100%',
                     padding: '0.65rem 0.9rem',
-                    background: 'rgba(0,0,0,0.4)',
+                    background: '#f7f6f2',
                     border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-sm)',
-                    color: 'var(--accent-gold-light)',
+                    color: 'var(--accent-gold-dark)',
                     outline: 'none',
                     fontSize: '0.82rem'
                   }}
@@ -289,9 +290,9 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
                     gap: '0.5rem',
                     padding: '0.75rem',
                     borderRadius: 'var(--radius-full)',
-                    background: 'rgba(37, 211, 102, 0.15)',
+                    background: 'rgba(37, 211, 102, 0.12)',
                     border: '1px solid rgba(37, 211, 102, 0.3)',
-                    color: '#25d366',
+                    color: '#128c7e',
                     fontSize: '0.88rem',
                     fontWeight: '600'
                   }}
@@ -309,30 +310,30 @@ export default function BookingModal({ isOpen, onClose, customSpec }) {
               width: '64px',
               height: '64px',
               borderRadius: '50%',
-              background: 'rgba(212, 175, 55, 0.15)',
+              background: 'rgba(197, 160, 89, 0.15)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--accent-gold)',
+              color: 'var(--accent-gold-dark)',
               margin: '0 auto 1.25rem auto'
             }}>
               <CheckCircle2 size={36} />
             </div>
 
-            <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '0.5rem' }}>Booking Request Received!</h3>
+            <h3 style={{ fontSize: '1.8rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Booking Request Received!</h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-              Thank you, <strong style={{ color: '#fff' }}>{formData.name}</strong>. Our lead master tailor at Saru's Fashion Studio will call you at <strong>{formData.phone}</strong> to confirm your slot for <strong>{formData.preferredDate || 'your selected date'}</strong>.
+              Thank you, <strong style={{ color: 'var(--text-primary)' }}>{formData.name}</strong>. Our lead master tailor at Saru's Fashion Studio will call you at <strong>{formData.phone}</strong> to confirm your slot for <strong>{formData.preferredDate || 'your selected date'}</strong>.
             </p>
 
             <div style={{
-              background: 'rgba(0,0,0,0.3)',
+              background: '#f7f6f2',
               padding: '1.25rem',
               borderRadius: 'var(--radius-md)',
               border: '1px solid var(--border-subtle)',
               marginBottom: '2rem',
               textAlign: 'left'
             }}>
-              <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold)', fontWeight: '600', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold-dark)', fontWeight: '600', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <MapPin size={15} /> Studio Address (Kondapur, Hyderabad)
               </div>
               <div style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>

@@ -49,18 +49,18 @@ export default function StorySection() {
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(212, 175, 55, 0.12)',
+                background: 'rgba(197, 160, 89, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--accent-gold)',
+                color: 'var(--accent-gold-dark)',
                 flexShrink: 0
               }}>
                 <Ruler size={20} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>Zero-Gap Ergonomic Patterning</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.5 }}>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>Zero-Gap Ergonomic Patterning</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5 }}>
                   We don't rely on standard size charts. Every saree blouse and lehenga is drafted using 18 distinct body measurement points for a seamless fit.
                 </p>
               </div>
@@ -75,18 +75,18 @@ export default function StorySection() {
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(212, 175, 55, 0.12)',
+                background: 'rgba(197, 160, 89, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--accent-gold)',
+                color: 'var(--accent-gold-dark)',
                 flexShrink: 0
               }}>
                 <Sparkles size={20} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>In-House Master Embroidery</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.5 }}>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>In-House Master Embroidery</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5 }}>
                   Our team of veteran karigars specialize in intricate Maggam work, Zardozi, thread work, and Swarovski embellishments tailored to your fabric.
                 </p>
               </div>
@@ -101,18 +101,18 @@ export default function StorySection() {
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(212, 175, 55, 0.12)',
+                background: 'rgba(197, 160, 89, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'var(--accent-gold)',
+                color: 'var(--accent-gold-dark)',
                 flexShrink: 0
               }}>
                 <Heart size={20} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '0.25rem' }}>Personalized Trial & Fitting Session</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.5 }}>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>Personalized Trial & Fitting Session</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5 }}>
                   We host dedicated fitting trials at our studio before final finishing touches, giving you complete peace of mind for your big event.
                 </p>
               </div>

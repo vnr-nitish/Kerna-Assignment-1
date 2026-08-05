@@ -1,36 +1,36 @@
 :root {
-  --bg-primary: #041d21;
-  --bg-secondary: #082c31;
-  --bg-surface: #0a373d;
-  --bg-card: rgba(10, 55, 61, 0.75);
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf9f6;
+  --bg-surface: #f4f3ef;
+  --bg-card: #ffffff;
   
-  --text-primary: #faf8f5;
-  --text-secondary: #c0d8d8;
-  --text-muted: #85acb0;
+  --text-primary: #111111;
+  --text-secondary: #444444;
+  --text-muted: #777777;
   
-  --accent-teal: #006b6e;
-  --accent-teal-light: #008b8f;
-  --accent-gold: #d4af37;
-  --accent-gold-light: #ebd68d;
-  --accent-gold-dark: #a6841b;
-  --accent-rose: #c97b84;
-  --accent-emerald: #006b6e;
+  --accent-teal: #0d3b36;
+  --accent-teal-light: #165b53;
+  --accent-gold: #c5a059;
+  --accent-gold-light: #d8b877;
+  --accent-gold-dark: #9e7a37;
+  --accent-rose: #b85c6d;
+  --accent-emerald: #0d3b36;
   
-  --border-gold: rgba(212, 175, 55, 0.3);
-  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-gold: rgba(197, 160, 89, 0.35);
+  --border-subtle: rgba(0, 0, 0, 0.08);
   
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
   
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-full: 9999px;
   
-  --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 107, 110, 0.2);
-  --glass-bg: rgba(8, 44, 49, 0.85);
-  --backdrop-blur: blur(12px);
+  --shadow-lux: 0 15px 35px rgba(0, 0, 0, 0.06), 0 5px 15px rgba(0, 0, 0, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.94);
+  --backdrop-blur: blur(16px);
   
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -58,7 +58,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
@@ -91,12 +91,12 @@ img {
 }
 
 .section-padding {
-  padding: 2.5rem 0;
+  padding: 3.5rem 0;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 2rem 0;
+    padding: 2.5rem 0;
   }
 }
 
@@ -137,11 +137,11 @@ section {
 
 .subheading {
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--accent-gold);
-  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--accent-gold-dark);
+  font-weight: 700;
   margin-bottom: 0.75rem;
   display: inline-block;
 }
@@ -154,7 +154,7 @@ section {
   padding: 0.85rem 1.6rem;
   font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   border-radius: var(--radius-full);
   transition: var(--transition);
   white-space: nowrap;
@@ -162,43 +162,42 @@ section {
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, #b89228 100%);
-  color: #0c1c15;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.35);
 }
 
 .btn-gold:hover {
   background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+  box-shadow: 0 8px 25px rgba(197, 160, 89, 0.45);
 }
 
 .btn-outline {
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--accent-gold);
   color: var(--text-primary);
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(197, 160, 89, 0.06);
 }
 
 .btn-outline:hover {
-  border-color: var(--accent-gold);
-  background: rgba(212, 175, 55, 0.15);
-  color: var(--accent-gold-light);
+  border-color: var(--accent-gold-dark);
+  background: rgba(197, 160, 89, 0.14);
+  color: var(--accent-gold-dark);
   transform: translateY(-2px);
 }
 
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lux);
 }
 
 .glass-panel-gold {
   background: var(--bg-card);
-  backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lux);
 }
 
 /* Services 4-Column Single Row Layout */

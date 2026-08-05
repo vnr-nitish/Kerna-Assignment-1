@@ -4,8 +4,8 @@ import * as THREE from 'three';
 export default function ThreeDStudioCanvas({ 
   interactive = true, 
   style, 
-  fabricColor = 0x006b6e, 
-  accentColor = 0xd4af37 
+  fabricColor = 0x0d3b36, 
+  accentColor = 0xc5a059 
 }) {
   const containerRef = useRef(null);
 
@@ -25,20 +25,20 @@ export default function ThreeDStudioCanvas({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // 3D Lighting setup
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    // 3D Studio Lighting setup
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
     scene.add(ambientLight);
 
-    const goldPointLight = new THREE.PointLight(accentColor, 4.0, 50);
+    const goldPointLight = new THREE.PointLight(accentColor, 4.5, 50);
     goldPointLight.position.set(5, 5, 5);
     scene.add(goldPointLight);
 
-    const fillPointLight = new THREE.PointLight(0xffffff, 2.5, 50);
+    const fillPointLight = new THREE.PointLight(0xffffff, 3.0, 50);
     fillPointLight.position.set(-5, -3, 3);
     scene.add(fillPointLight);
 
     // Bottom Gold Spotlight specifically illuminating the Pedestal Base
-    const baseSpotLight = new THREE.PointLight(0xd4af37, 4.5, 30);
+    const baseSpotLight = new THREE.PointLight(0xc5a059, 4.5, 30);
     baseSpotLight.position.set(0, -2.5, 3.5);
     scene.add(baseSpotLight);
 

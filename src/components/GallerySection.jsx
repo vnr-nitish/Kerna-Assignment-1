@@ -165,9 +165,10 @@ export default function GallerySection({ onOpenBooking }) {
                 fontSize: '0.85rem',
                 fontWeight: '600',
                 transition: 'var(--transition)',
-                background: filter === cat.id ? 'var(--accent-gold)' : 'rgba(255,255,255,0.05)',
-                color: filter === cat.id ? '#0c1c15' : 'var(--text-secondary)',
-                border: filter === cat.id ? '1px solid var(--accent-gold)' : '1px solid var(--border-subtle)'
+                background: filter === cat.id ? 'var(--accent-gold)' : '#ffffff',
+                color: filter === cat.id ? '#ffffff' : 'var(--text-primary)',
+                border: filter === cat.id ? '1px solid var(--accent-gold)' : '1px solid var(--border-subtle)',
+                boxShadow: filter === cat.id ? '0 4px 15px rgba(197, 160, 89, 0.3)' : '0 2px 6px rgba(0,0,0,0.03)'
               }}
             >
               {cat.label}
@@ -212,7 +213,7 @@ export default function GallerySection({ onOpenBooking }) {
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, rgba(10,27,21,0.92) 0%, transparent 60%)',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%)',
                   opacity: 0.9,
                   display: 'flex',
                   flexDirection: 'column',
@@ -221,14 +222,14 @@ export default function GallerySection({ onOpenBooking }) {
                 }}>
                   <div style={{
                     fontSize: '0.72rem',
-                    color: 'var(--accent-gold)',
+                    color: 'var(--accent-gold-light)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
                     marginBottom: '0.25rem'
                   }}>
                     {item.craftDetails}
                   </div>
-                  <h3 style={{ fontSize: '1.18rem', color: '#fff', fontWeight: '600' }}>
+                  <h3 style={{ fontSize: '1.18rem', color: '#ffffff', fontWeight: '600' }}>
                     {item.title}
                   </h3>
                 </div>
@@ -240,12 +241,13 @@ export default function GallerySection({ onOpenBooking }) {
                   width: '34px',
                   height: '34px',
                   borderRadius: '50%',
-                  background: 'rgba(10,27,21,0.75)',
+                  background: 'rgba(255,255,255,0.85)',
                   backdropFilter: 'blur(8px)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--accent-gold)'
+                  color: 'var(--accent-gold-dark)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
                 }}>
                   <Eye size={16} />
                 </div>
@@ -262,9 +264,9 @@ export default function GallerySection({ onOpenBooking }) {
           position: 'fixed',
           inset: 0,
           zIndex: 10000,
-          background: 'rgba(4, 29, 33, 0.96)',
-          backdropFilter: 'blur(18px)',
-          WebkitBackdropFilter: 'blur(18px)',
+          background: 'rgba(0, 0, 0, 0.75)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -289,8 +291,8 @@ export default function GallerySection({ onOpenBooking }) {
               alignItems: 'center',
               justifyContent: 'center',
               padding: '1.25rem',
-              boxShadow: '0 30px 70px rgba(0,0,0,0.95)',
-              background: 'rgba(10, 27, 21, 0.95)'
+              boxShadow: '0 25px 60px rgba(0,0,0,0.3)',
+              background: '#ffffff'
             }}
           >
             {/* Close Button Inside Pop-up Box */}
@@ -301,13 +303,13 @@ export default function GallerySection({ onOpenBooking }) {
                 top: '1rem',
                 right: '1rem',
                 zIndex: 310,
-                color: '#fff',
-                background: 'rgba(255,255,255,0.12)',
+                color: 'var(--text-primary)',
+                background: 'rgba(0,0,0,0.06)',
                 border: '1px solid var(--border-gold)',
                 padding: '0.45rem',
                 borderRadius: '50%',
                 cursor: 'pointer',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
+                boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
               }}
             >
               <X size={20} />
@@ -322,7 +324,7 @@ export default function GallerySection({ onOpenBooking }) {
               justifyContent: 'center',
               borderRadius: 'var(--radius-sm)',
               overflow: 'hidden',
-              background: '#071410',
+              background: '#f7f6f2',
               position: 'relative'
             }}>
               {/* Previous Arrow Button INSIDE Pop-up Box */}
@@ -332,13 +334,13 @@ export default function GallerySection({ onOpenBooking }) {
                   position: 'absolute',
                   left: '0.85rem',
                   zIndex: 310,
-                  color: 'var(--accent-gold)',
-                  background: 'rgba(10,27,21,0.85)',
+                  color: 'var(--accent-gold-dark)',
+                  background: 'rgba(255,255,255,0.92)',
                   border: '1px solid var(--border-gold)',
                   padding: '0.65rem',
                   borderRadius: '50%',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.7)',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.15)',
                   backdropFilter: 'blur(8px)'
                 }}
               >
@@ -352,13 +354,13 @@ export default function GallerySection({ onOpenBooking }) {
                   position: 'absolute',
                   right: '0.85rem',
                   zIndex: 310,
-                  color: 'var(--accent-gold)',
-                  background: 'rgba(10,27,21,0.85)',
+                  color: 'var(--accent-gold-dark)',
+                  background: 'rgba(255,255,255,0.92)',
                   border: '1px solid var(--border-gold)',
                   padding: '0.65rem',
                   borderRadius: '50%',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.7)',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.15)',
                   backdropFilter: 'blur(8px)'
                 }}
               >
@@ -391,10 +393,10 @@ export default function GallerySection({ onOpenBooking }) {
               gap: '0.5rem'
             }}>
               <div>
-                <h3 style={{ fontSize: '1.2rem', color: '#fff', fontWeight: '600', marginBottom: '0.15rem' }}>
+                <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', fontWeight: '600', marginBottom: '0.15rem' }}>
                   {activeItem.title}
                 </h3>
-                <div style={{ fontSize: '0.78rem', color: 'var(--accent-gold-light)' }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--accent-gold-dark)' }}>
                   {activeItem.craftDetails}
                 </div>
               </div>

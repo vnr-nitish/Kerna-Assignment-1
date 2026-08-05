@@ -7,12 +7,12 @@ export default function Hero({ onOpenBooking }) {
     <section 
       style={{
         minHeight: '100dvh',
-        paddingTop: '4.8rem',
-        paddingBottom: '1.5rem',
+        paddingTop: '5rem',
+        paddingBottom: '2rem',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        background: 'radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.12) 0%, rgba(10, 27, 21, 0) 55%), radial-gradient(circle at 20% 80%, rgba(30, 74, 60, 0.35) 0%, rgba(10, 27, 21, 0) 50%)',
+        background: 'radial-gradient(circle at 85% 20%, rgba(197, 160, 89, 0.08) 0%, rgba(255, 255, 255, 0) 60%), radial-gradient(circle at 15% 85%, rgba(13, 59, 54, 0.05) 0%, rgba(255, 255, 255, 0) 50%), #ffffff',
         overflow: 'hidden',
         boxSizing: 'border-box'
       }}
@@ -38,21 +38,21 @@ export default function Hero({ onOpenBooking }) {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.4rem',
-              background: 'rgba(212, 175, 55, 0.08)',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
-              padding: '0.3rem 0.85rem',
+              background: 'rgba(197, 160, 89, 0.08)',
+              border: '1px solid var(--border-gold)',
+              padding: '0.35rem 0.85rem',
               borderRadius: 'var(--radius-full)',
               fontSize: '0.8rem',
-              color: 'var(--accent-gold-light)',
+              color: 'var(--accent-gold-dark)',
               marginBottom: '0.75rem',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+              boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
             }}>
-              <Star size={14} style={{ fill: '#d4af37', color: '#d4af37' }} />
-              <span style={{ fontWeight: '600', color: '#fff' }}>4.9/5 Star Rated Studio</span>
+              <Star size={14} style={{ fill: '#c5a059', color: '#c5a059' }} />
+              <span style={{ fontWeight: '600', color: 'var(--text-primary)' }}>4.9/5 Star Rated Couture Studio</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="heading-lg" style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: 'clamp(2rem, 3.8vw, 3.4rem)' }}>
+            <h1 className="heading-lg" style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: 'clamp(2.2rem, 4vw, 3.6rem)' }}>
               Bespoke Fashion Tailored for Your <span className="text-gold" style={{ fontStyle: 'italic', fontWeight: '400' }}>Unique Grace.</span>
             </h1>
 
@@ -62,11 +62,11 @@ export default function Hero({ onOpenBooking }) {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               style={{
-                fontSize: '1.15rem',
+                fontSize: '1.18rem',
                 fontFamily: 'var(--font-serif)',
-                color: 'var(--accent-gold)',
+                color: 'var(--accent-gold-dark)',
                 fontStyle: 'italic',
-                marginBottom: '0.75rem',
+                marginBottom: '0.85rem',
                 fontWeight: '600'
               }}
             >
@@ -75,10 +75,10 @@ export default function Hero({ onOpenBooking }) {
 
             {/* Business Description */}
             <p style={{
-              fontSize: '0.95rem',
+              fontSize: '0.96rem',
               color: 'var(--text-secondary)',
-              lineHeight: 1.5,
-              marginBottom: '1.25rem',
+              lineHeight: 1.6,
+              marginBottom: '1.4rem',
               maxWidth: '580px'
             }}>
               Saru’s Fashion Studio offers specialized bespoke designing across 4 core offerings: <strong>Fabrics, Designer Lehengas, Designer Sarees, and Bridal Blouses</strong> with precision in-house fitting trials.
@@ -86,13 +86,13 @@ export default function Hero({ onOpenBooking }) {
 
             {/* Action Buttons */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.5rem' }}>
-              <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.65rem 1.25rem' }}>
+              <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.7rem 1.35rem' }}>
                 <Calendar size={16} />
                 <span>Book Fitting Consultation</span>
               </button>
               
-              <a href="#services" className="btn btn-outline" style={{ padding: '0.65rem 1.25rem' }}>
-                <Sparkles size={16} style={{ color: 'var(--accent-gold)' }} />
+              <a href="#services" className="btn btn-outline" style={{ padding: '0.7rem 1.35rem' }}>
+                <Sparkles size={16} style={{ color: 'var(--accent-gold-dark)' }} />
                 <span>Explore 4 Core Services</span>
               </a>
             </div>
@@ -106,31 +106,31 @@ export default function Hero({ onOpenBooking }) {
               borderTop: '1px solid var(--border-subtle)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ padding: '0.4rem', background: 'rgba(212,175,55,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold)' }}>
+                <div style={{ padding: '0.4rem', background: 'rgba(197,160,89,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold-dark)' }}>
                   <ShieldCheck size={16} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#fff' }}>100% Fit</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-primary)' }}>100% Fit</div>
                   <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Guarantee</div>
                 </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ padding: '0.4rem', background: 'rgba(212,175,55,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold)' }}>
+                <div style={{ padding: '0.4rem', background: 'rgba(197,160,89,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold-dark)' }}>
                   <Scissors size={16} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#fff' }}>1,500+</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-primary)' }}>1,500+</div>
                   <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Stitched Fits</div>
                 </div>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ padding: '0.4rem', background: 'rgba(212,175,55,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold)' }}>
+                <div style={{ padding: '0.4rem', background: 'rgba(197,160,89,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold-dark)' }}>
                   <MapPin size={16} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#fff' }}>2 Branches</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-primary)' }}>2 Branches</div>
                   <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Kondapur & Moti Nagar</div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function Hero({ onOpenBooking }) {
                 transform: 'translate(-50%, -50%)',
                 width: '90%',
                 height: '90%',
-                background: 'radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, rgba(4, 29, 33, 0) 70%)',
+                background: 'radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
                 filter: 'blur(30px)',
                 pointerEvents: 'none'
               }} />
@@ -176,7 +176,7 @@ export default function Hero({ onOpenBooking }) {
                   width: 'auto',
                   objectFit: 'contain',
                   borderRadius: '24px',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.45)',
+                  boxShadow: '0 15px 35px rgba(0,0,0,0.12)',
                   display: 'block',
                   position: 'relative',
                   zIndex: 1

@@ -21,16 +21,18 @@ export default function Footer({ onOpenBooking }) {
           alignItems: 'center',
           flexWrap: 'wrap',
           gap: '1.5rem',
-          background: 'linear-gradient(135deg, rgba(8,44,49,0.95) 0%, rgba(10,55,61,0.95) 100%)'
+          background: 'linear-gradient(135deg, #0d3b36 0%, #165b53 100%)',
+          borderRadius: 'var(--radius-lg)',
+          boxShadow: '0 15px 35px rgba(13, 59, 54, 0.2)'
         }}>
           <div>
-            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold)', fontWeight: '700', marginBottom: '0.35rem' }}>
+            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-light)', fontWeight: '700', marginBottom: '0.35rem' }}>
               STUDIOS IN KONDAPUR & MOTI NAGAR
             </div>
-            <h3 style={{ fontSize: '1.85rem', color: '#fff', marginBottom: '0.4rem', fontFamily: 'var(--font-serif)' }}>
+            <h3 style={{ fontSize: '1.85rem', color: '#ffffff', marginBottom: '0.4rem', fontFamily: 'var(--font-serif)' }}>
               Ready to Craft Your Custom Story?
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', maxWidth: '520px' }}>
+            <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.92rem', maxWidth: '520px' }}>
               Schedule a 1-on-1 design consultation with Saru and experience high-precision master tailoring in Hyderabad.
             </p>
           </div>
@@ -45,10 +47,10 @@ export default function Footer({ onOpenBooking }) {
               href="https://maps.google.com/?q=Kondapur+Hyderabad"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-glass"
-              style={{ padding: '0.8rem 1.25rem', fontSize: '0.9rem', color: '#fff', border: '1px solid var(--border-gold)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+              className="btn"
+              style={{ padding: '0.8rem 1.25rem', fontSize: '0.9rem', color: '#ffffff', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
             >
-              <MapPin size={15} style={{ color: 'var(--accent-gold)' }} />
+              <MapPin size={15} style={{ color: 'var(--accent-gold-light)' }} />
               <span>Kondapur Map</span>
             </a>
 
@@ -56,10 +58,10 @@ export default function Footer({ onOpenBooking }) {
               href="https://maps.google.com/?q=Moti+Nagar+Hyderabad"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-glass"
-              style={{ padding: '0.8rem 1.25rem', fontSize: '0.9rem', color: '#fff', border: '1px solid var(--border-gold)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+              className="btn"
+              style={{ padding: '0.8rem 1.25rem', fontSize: '0.9rem', color: '#ffffff', background: 'rgba(255, 255, 255, 0.12)', border: '1px solid rgba(255, 255, 255, 0.3)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
             >
-              <MapPin size={15} style={{ color: 'var(--accent-gold)' }} />
+              <MapPin size={15} style={{ color: 'var(--accent-gold-light)' }} />
               <span>Moti Nagar Map</span>
             </a>
           </div>
@@ -81,16 +83,16 @@ export default function Footer({ onOpenBooking }) {
                   objectFit: 'cover'
                 }}
               />
-              <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: '#fff', fontWeight: '700' }}>
-                Saru's <span style={{ color: 'var(--accent-gold)' }}>Fashion Studio</span>
+              <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--text-primary)', fontWeight: '700' }}>
+                Saru's <span style={{ color: 'var(--accent-gold-dark)' }}>Fashion Studio</span>
               </div>
             </div>
 
-            <div style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontStyle: 'italic', marginBottom: '0.75rem', fontWeight: '600' }}>
+            <div style={{ fontSize: '0.88rem', color: 'var(--accent-gold-dark)', fontStyle: 'italic', marginBottom: '0.75rem', fontWeight: '600' }}>
               "Custom made outfits for every story"
             </div>
 
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '1.1rem' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '1.1rem' }}>
               Specialist bespoke studio across 4 core services: Curated Fabrics, Designer Lehengas, Designer Sarees, and Bridal Blouses.
             </p>
 
@@ -103,12 +105,12 @@ export default function Footer({ onOpenBooking }) {
                   width: '34px',
                   height: '34px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(197, 160, 89, 0.08)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--accent-gold)',
-                  border: '1px solid var(--border-subtle)'
+                  color: 'var(--accent-gold-dark)',
+                  border: '1px solid var(--border-gold)'
                 }}
               >
                 <Instagram size={16} />
@@ -122,12 +124,12 @@ export default function Footer({ onOpenBooking }) {
                   width: '34px',
                   height: '34px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(197, 160, 89, 0.08)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--accent-gold)',
-                  border: '1px solid var(--border-subtle)'
+                  color: 'var(--accent-gold-dark)',
+                  border: '1px solid var(--border-gold)'
                 }}
               >
                 <Facebook size={16} />
@@ -137,21 +139,21 @@ export default function Footer({ onOpenBooking }) {
 
           {/* Col 2: Direct Contact & Hours */}
           <div>
-            <h4 style={{ fontSize: '1.05rem', color: '#fff', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Get In Touch</h4>
+            <h4 style={{ fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Get In Touch</h4>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-              <a href="tel:+919989017733" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--text-secondary)' }}>
-                <Phone size={15} style={{ color: 'var(--accent-gold)' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+              <a href="tel:+919989017733" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--text-primary)' }}>
+                <Phone size={15} style={{ color: 'var(--accent-gold-dark)' }} />
                 <span style={{ fontFamily: 'var(--font-display)', fontWeight: '600' }}>+91 99890 17733</span>
               </a>
 
-              <a href="mailto:contact@sarusfashionstudio.com" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--text-secondary)' }}>
-                <Mail size={15} style={{ color: 'var(--accent-gold)' }} />
+              <a href="mailto:contact@sarusfashionstudio.com" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--text-primary)' }}>
+                <Mail size={15} style={{ color: 'var(--accent-gold-dark)' }} />
                 <span>contact@sarusfashionstudio.com</span>
               </a>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--text-secondary)' }}>
-                <Clock size={15} style={{ color: 'var(--accent-gold)' }} />
+                <Clock size={15} style={{ color: 'var(--accent-gold-dark)' }} />
                 <span>Mon - Sat: 10:30 AM – 8:30 PM</span>
               </div>
             </div>
@@ -159,13 +161,13 @@ export default function Footer({ onOpenBooking }) {
 
           {/* Col 3: Core Offerings */}
           <div>
-            <h4 style={{ fontSize: '1.05rem', color: '#fff', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Core Offerings</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-              <a href="#services" style={{ color: 'var(--text-secondary)' }}>Curated Fabrics</a>
-              <a href="#services" style={{ color: 'var(--text-secondary)' }}>Designer Lehengas</a>
-              <a href="#services" style={{ color: 'var(--text-secondary)' }}>Designer Sarees</a>
-              <a href="#services" style={{ color: 'var(--text-secondary)' }}>Bridal Blouses</a>
-              <a href="#estimator" style={{ color: 'var(--accent-gold)' }}>✨ Interactive Customizer</a>
+            <h4 style={{ fontSize: '1.05rem', color: 'var(--text-primary)', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Core Offerings</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
+              <a href="#services" style={{ color: 'var(--text-primary)' }}>Curated Fabrics</a>
+              <a href="#services" style={{ color: 'var(--text-primary)' }}>Designer Lehengas</a>
+              <a href="#services" style={{ color: 'var(--text-primary)' }}>Designer Sarees</a>
+              <a href="#services" style={{ color: 'var(--text-primary)' }}>Bridal Blouses</a>
+              <a href="#estimator" style={{ color: 'var(--accent-gold-dark)', fontWeight: '600' }}>✨ Interactive Customizer</a>
             </div>
           </div>
 
