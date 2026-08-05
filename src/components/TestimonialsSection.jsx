@@ -37,11 +37,11 @@ export default function TestimonialsSection() {
       <div className="container">
         
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
-          <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.4rem' }}>
-            AUTHENTIC FEEDBACK
+          <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.35rem' }}>
+            CLIENT REVIEWS
           </div>
           <h2 style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)', color: 'var(--text-primary)', fontFamily: 'var(--font-serif)' }}>
-            Client Fitting Testimonials
+            What clients say after their studio trials.
           </h2>
         </div>
 

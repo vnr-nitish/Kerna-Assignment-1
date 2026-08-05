@@ -9,12 +9,12 @@ export default function StorySection() {
         
         {/* Header - Flowing from Hero Section */}
         <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 2rem auto' }}>
-          <span className="subheading" style={{ fontSize: '0.8rem', marginBottom: '0.4rem' }}>The Bespoke Journey</span>
+          <span className="subheading" style={{ fontSize: '0.8rem', marginBottom: '0.4rem' }}>OUR CRAFTSMANSHIP</span>
           <h2 className="heading-md" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.3rem)', marginBottom: '0.6rem' }}>
-            From Vision to Fit: How We Craft Your <span className="text-gold">Bespoke Outfit.</span>
+            Handmade detail, <span className="text-gold">fitted just for you.</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-            After selecting your core offering, experience our signature 3-step crafting process—from 18-point ergonomic pattern drafting to in-house master embroidery and dedicated fitting trials.
+            We work closely with you from initial sketch to final fitting so every saree blouse, lehenga, and custom drape sits comfortably and looks effortless.
           </p>
         </div>
 
@@ -59,9 +59,9 @@ export default function StorySection() {
                 <Ruler size={20} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>Zero-Gap Ergonomic Patterning</h3>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>Personalized Measurement & Patterning</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5 }}>
-                  We don't rely on standard size charts. Every saree blouse and lehenga is drafted using 18 distinct body measurement points for a seamless fit.
+                  Every outfit is drafted from scratch based on your posture and preferences, avoiding standard size templates.
                 </p>
               </div>
             </motion.div>
@@ -85,9 +85,9 @@ export default function StorySection() {
                 <Sparkles size={20} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>In-House Master Embroidery</h3>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>In-House Hand Embroidery</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5 }}>
-                  Our team of veteran karigars specialize in intricate Maggam work, Zardozi, thread work, and Swarovski embellishments tailored to your fabric.
+                  Our master artisans work on Maggam embroidery, Zardozi, and thread embellishments directly in our Hyderabad workshop.
                 </p>
               </div>
             </motion.div>
@@ -111,9 +111,9 @@ export default function StorySection() {
                 <Heart size={20} />
               </div>
               <div>
-                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>Personalized Trial & Fitting Session</h3>
+                <h3 style={{ fontSize: '1.1rem', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>In-Studio Trial Fitting</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5 }}>
-                  We host dedicated fitting trials at our studio before final finishing touches, giving you complete peace of mind for your big event.
+                  Try on your semi-stitched garment at our Kondapur or Moti Nagar studio before final hand finishing.
                 </p>
               </div>
             </motion.div>

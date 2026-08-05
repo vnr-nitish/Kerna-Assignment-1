@@ -7,64 +7,64 @@ const CORE_SERVICES = [
     id: 'fabrics',
     title: 'Curated Fabrics',
     category: 'Sourcing & Selection',
-    shortDesc: 'Handpicked pure Kanjeevaram silks, organzas, tissue, velvet, and embroidered net fabrics.',
-    fullDesc: 'We curate and source high-grade raw silks, Kanjeevaram weaves, sheer organza, and textured velvets directly. Whether you need matching fabric for a blouse or custom dye-to-match tones for your lehenga, our fabric consultation ensures premium quality.',
-    craftTime: 'Instant / 3-5 Days',
+    shortDesc: 'Pure Kanjeevaram silks, organza, georgette, velvet, and embroidered nets.',
+    fullDesc: 'We source pure raw silks, Kanjeevaram weaves, sheer organza, and rich velvets directly. Whether you need a matching blouse fabric or custom dyed tones for your lehenga, we help you pick the right material in our studio.',
+    craftTime: 'Available In-Studio',
     priceEstimate: 'Custom Sourcing',
     image: '/Services/A.jpg',
     features: [
       'Pure Kanjeevaram & Banarasi weaves',
       'Custom color dyeing & tone matching',
-      'Luxurious organza, net & velvet options',
-      'In-studio tactile fabric swatches'
+      'Soft organza, net & velvet fabrics',
+      'Touch and feel fabric swatches at studio'
     ]
   },
   {
     id: 'lehengas',
     title: 'Designer Lehengas',
     category: 'Bridal & Festivities',
-    shortDesc: 'Bespoke lehenga sets with opulent Zardozi, Aari handwork, dual dupattas, and tailored flare.',
-    fullDesc: 'Crafted exclusively for your wedding, sangeet, or gala. Our designer lehengas feature custom can-can layering, ergonomic waistline fitting, and intricate hand embroidery customized around your personal love story.',
+    shortDesc: 'Bridal and festive lehengas with Zardozi handwork, dupattas, and tailored flare.',
+    fullDesc: 'Tailored for your wedding, sangeet, or reception. Our lehengas feature custom can-can layering, comfortable waistline fitting, and hand embroidery designed around your vision.',
     craftTime: '10 - 21 Days',
-    priceEstimate: 'Bespoke Order',
+    priceEstimate: 'Custom Outfit',
     image: '/Services/B.jpg',
     features: [
-      'Dual dupatta styling & draping setup',
-      'Integrated structural can-can flare',
-      'In-house Maggam & Zardozi karigars',
-      '2 stage fitting trials at studio'
+      'Dual dupatta styling setup',
+      'Comfortable can-can flare',
+      'In-house Maggam & Zardozi handwork',
+      'Dedicated trial fitting at studio'
     ]
   },
   {
     id: 'sarees',
     title: 'Designer Sarees',
     category: 'Pre-Draped & Fusion',
-    shortDesc: 'Pre-stitched concept sarees, belt ensembles, cocktail drapes, and heirloom saree restyling.',
-    fullDesc: 'Experience effortless elegance with our designer saree creations. We offer ready-to-wear pre-draped sarees, pleated jacket ensembles, and restyling of vintage family sarees into modern masterpieces.',
+    shortDesc: 'Pre-draped sarees, waist belts, cocktail drapes, and saree restyling.',
+    fullDesc: 'Enjoy effortless wear with custom pre-draped sarees and pleated ensembles. We also restyle vintage family sarees into updated modern outfits for your events.',
     craftTime: '5 - 10 Days',
-    priceEstimate: 'Custom Couture',
+    priceEstimate: 'Custom Outfit',
     image: '/Services/C.jpg',
     features: [
-      'Pre-stitched quick drape construction',
-      'Designer embroidered waist belts',
-      'Heirloom saree restoration & restyling',
-      'Custom pleat setting for zero hassle'
+      'Pre-stitched easy drapes',
+      'Hand-embroidered waist belts',
+      'Family saree restyling',
+      'Pleat setting for easy movement'
     ]
   },
   {
     id: 'blouses',
     title: 'Bridal Blouses',
-    category: 'Signature Handwork',
-    shortDesc: 'Master Maggam work, Aari thread embroidery, boat necks, and zero-gap ergonomic pattern fitting.',
-    fullDesc: 'Our signature specialty. Every blouse is drafted using 18 distinct body points to prevent armpit gaping or shoulder slipping. Customized with elbow-length Maggam work, peacock motifs, and sheer net backlines.',
+    category: 'Handwork & Fit',
+    shortDesc: 'Handcrafted Maggam work, Aari embroidery, custom necklines, and secure shoulder fits.',
+    fullDesc: 'Our studio specialty. Every blouse is cut to your exact shape to prevent shoulder slipping or awkward gaping. Custom embroidered with traditional motifs or contemporary necklines.',
     craftTime: '5 - 12 Days',
-    priceEstimate: 'Master Tailored',
+    priceEstimate: 'Custom Stitched',
     image: '/Services/D.jpg',
     features: [
-      '18-point body measurement mapping',
-      'Anti-shoulder-slip inner strap locks',
-      'Handcrafted Maggam, Aari & Zari work',
-      'Custom cups & structural necklines'
+      'Personalized body measurement cut',
+      'Shoulder strap locks',
+      'Hand-stitched Maggam & Zari embroidery',
+      'Built-in cup support & neckline finish'
     ]
   }
 ];
@@ -89,12 +89,12 @@ export default function ServicesSection({ onSelectService }) {
         
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3.5rem auto' }}>
-          <span className="subheading">4 Core Offerings</span>
+          <span className="subheading">WHAT WE DO</span>
           <h2 className="heading-md" style={{ marginBottom: '0.75rem' }}>
-            Our Specialized <span className="text-gold">Design Services.</span>
+            Four core ways we bring <span className="text-gold">your design to life.</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
-            Every outfit at Saru’s Fashion Studio is custom-crafted to tell your personal story with precision fitting and artisan detail.
+            Choose from our four specialized services, or combine them to craft your complete occasion look.
           </p>
         </div>
 

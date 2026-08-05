@@ -33,107 +33,40 @@ export default function Hero({ onOpenBooking }) {
             className="hero-text-col"
           >
             
-            {/* Studio Rating Badge */}
+            {/* Studio Location Subheading */}
             <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              background: 'rgba(197, 160, 89, 0.08)',
-              border: '1px solid var(--border-gold)',
-              padding: '0.35rem 0.85rem',
-              borderRadius: 'var(--radius-full)',
-              fontSize: '0.8rem',
+              fontSize: '0.78rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.18em',
               color: 'var(--accent-gold-dark)',
-              marginBottom: '0.75rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+              fontWeight: '700',
+              marginBottom: '0.65rem'
             }}>
-              <Star size={14} style={{ fill: '#c5a059', color: '#c5a059' }} />
-              <span style={{ fontWeight: '600', color: 'var(--text-primary)' }}>4.9/5 Star Rated Couture Studio</span>
+              HYDERABAD • KONDAPUR & MOTI NAGAR
             </div>
 
             {/* Main Headline */}
-            <h1 className="heading-lg" style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: 'clamp(2.2rem, 4vw, 3.6rem)' }}>
-              Bespoke Fashion Tailored for Your <span className="text-gold" style={{ fontStyle: 'italic', fontWeight: '400' }}>Unique Grace.</span>
+            <h1 className="heading-lg" style={{ color: 'var(--text-primary)', marginBottom: '0.75rem', fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', lineHeight: 1.15 }}>
+              Custom Couture, <span className="text-gold" style={{ fontStyle: 'italic', fontWeight: '400' }}>Tailored to Your Story.</span>
             </h1>
-
-            {/* OFFICIAL BRAND TAGLINE */}
-            <motion.div 
-              initial={{ scale: 0.98, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{
-                fontSize: '1.18rem',
-                fontFamily: 'var(--font-serif)',
-                color: 'var(--accent-gold-dark)',
-                fontStyle: 'italic',
-                marginBottom: '0.85rem',
-                fontWeight: '600'
-              }}
-            >
-              "Custom made outfits for every story"
-            </motion.div>
 
             {/* Business Description */}
             <p style={{
-              fontSize: '0.96rem',
+              fontSize: '1.02rem',
               color: 'var(--text-secondary)',
               lineHeight: 1.6,
-              marginBottom: '1.4rem',
-              maxWidth: '580px'
+              marginBottom: '1.75rem',
+              maxWidth: '520px'
             }}>
-              Saru’s Fashion Studio offers specialized bespoke designing across 4 core offerings: <strong>Fabrics, Designer Lehengas, Designer Sarees, and Bridal Blouses</strong> with precision in-house fitting trials.
+              From handpicked fabrics to Maggam embroidery and lehenga styling, we craft custom outfits for your special occasions with personalized in-studio trial fittings.
             </p>
 
-            {/* Action Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.5rem' }}>
-              <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.7rem 1.35rem' }}>
-                <Calendar size={16} />
-                <span>Book Fitting Consultation</span>
+            {/* Single Primary Action Button */}
+            <div>
+              <button onClick={onOpenBooking} className="btn btn-gold" style={{ padding: '0.85rem 1.75rem', fontSize: '0.95rem' }}>
+                <Calendar size={18} />
+                <span>Book Studio Fitting</span>
               </button>
-              
-              <a href="#services" className="btn btn-outline" style={{ padding: '0.7rem 1.35rem' }}>
-                <Sparkles size={16} style={{ color: 'var(--accent-gold-dark)' }} />
-                <span>Explore 4 Core Services</span>
-              </a>
-            </div>
-
-            {/* Trust Signals */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-              gap: '0.85rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid var(--border-subtle)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ padding: '0.4rem', background: 'rgba(197,160,89,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold-dark)' }}>
-                  <ShieldCheck size={16} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-primary)' }}>100% Fit</div>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Guarantee</div>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ padding: '0.4rem', background: 'rgba(197,160,89,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold-dark)' }}>
-                  <Scissors size={16} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-primary)' }}>1,500+</div>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Stitched Fits</div>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ padding: '0.4rem', background: 'rgba(197,160,89,0.1)', borderRadius: 'var(--radius-sm)', color: 'var(--accent-gold-dark)' }}>
-                  <MapPin size={16} />
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-primary)' }}>2 Branches</div>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Kondapur & Moti Nagar</div>
-                </div>
-              </div>
             </div>
 
           </motion.div>

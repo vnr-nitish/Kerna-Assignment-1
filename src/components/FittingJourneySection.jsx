@@ -5,23 +5,23 @@ export default function FittingJourneySection() {
   const steps = [
     {
       num: '01',
-      title: '1-on-1 Design Consultation',
-      desc: 'Visit our Kondapur or Moti Nagar studio. We review your inspiration, body shape, and occasion requirements.'
+      title: 'Initial Studio Consultation',
+      desc: 'Visit our Kondapur or Moti Nagar studio. We talk through your ideas, fabric options, and event timeline.'
     },
     {
       num: '02',
-      title: 'Fabric Sourcing & Sketching',
-      desc: 'Select from our in-studio silk & organza fabrics or bring your own saree. We outline the exact cut and Maggam work.'
+      title: 'Design & Fabric Selection',
+      desc: 'Pick fabrics from our in-studio collection or share your saree. We sketch necklines and embroidery layouts together.'
     },
     {
       num: '03',
       title: 'In-Studio Trial Fitting',
-      desc: 'You try on the semi-stitched garment at our studio to verify shoulder alignment, bust cup placement, and length.'
+      desc: 'Try on the semi-stitched outfit at our studio so we can check armhole comfort, bust shaping, and waist length.'
     },
     {
       num: '04',
-      title: 'Final Hand Finishing & Pick-Up',
-      desc: 'Master artisans add final tassels, press, and package your flawless outfit for your special event.'
+      title: 'Final Hand Finishing & Delivery',
+      desc: 'Our tailors add tassels, press the outfit, and have it ready for your big day.'
     }
   ];
 
@@ -37,8 +37,11 @@ export default function FittingJourneySection() {
       <div className="container">
         
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+          <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.35rem' }}>
+            HOW IT WORKS
+          </div>
           <h2 style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.3rem)', color: 'var(--text-primary)', fontFamily: 'var(--font-serif)' }}>
-            The 4-Step Bespoke Fitting Journey
+            Our 4-step studio fitting process.
           </h2>
         </div>
 
