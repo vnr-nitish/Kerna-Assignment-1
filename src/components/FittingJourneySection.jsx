@@ -53,7 +53,7 @@ export default function FittingJourneySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="glass-panel-gold"
+              className="glass-panel-gold journey-card"
               style={{
                 padding: '1.75rem 1.35rem',
                 display: 'flex',
@@ -65,7 +65,7 @@ export default function FittingJourneySection() {
                 boxShadow: 'var(--shadow-lux)'
               }}
             >
-              <div style={{
+              <div className="journey-number" style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: '2.2rem',
                 fontWeight: '700',
@@ -112,6 +112,25 @@ export default function FittingJourneySection() {
         @media (min-width: 1024px) {
           .journey-grid {
             grid-template-columns: repeat(4, 1fr) !important;
+            gap: 0.85rem !important;
+          }
+
+          .journey-card {
+            padding: 1.15rem 1.1rem !important;
+            gap: 0.7rem !important;
+          }
+
+          .journey-card h3 {
+            font-size: 1.05rem !important;
+          }
+
+          .journey-card p {
+            font-size: 0.8rem !important;
+            line-height: 1.45 !important;
+          }
+
+          .journey-number {
+            font-size: 1.8rem !important;
           }
         }
       `}</style>

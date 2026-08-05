@@ -169,9 +169,31 @@ export default function Hero({ onOpenBooking }) {
         }
 
         @media (min-width: 992px) {
+          .hero-visual-col {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+
+          .hero-img-wrapper {
+            width: auto !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+            border-radius: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+
+          .hero-img-container {
+            max-height: calc(100vh - 125px) !important;
+            justify-content: center !important;
+            align-items: center !important;
+          }
+
           .hero-text-col { grid-column: span 6 !important; }
           .hero-visual-col { grid-column: span 6 !important; }
-          .hero-img-container { max-height: calc(100vh - 125px) !important; }
           .hero-img-responsive {
             max-width: 100% !important;
             max-height: calc(100vh - 125px) !important;
