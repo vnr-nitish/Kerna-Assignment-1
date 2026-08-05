@@ -71,20 +71,19 @@ export default function Hero({ onOpenBooking }) {
 
           </motion.div>
 
-          {/* Borderless Organic Studio Photo Presentation (Constrained to Single Screen 100vh) */}
+          {/* Borderless Organic Studio Photo Presentation */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="hero-visual-col"
           >
-            <div style={{
+            <div className="hero-img-container" style={{
               position: 'relative',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              width: '100%',
-              maxHeight: 'calc(100vh - 125px)'
+              width: '100%'
             }}>
               {/* Ambient Studio Gold Radial Glow Backdrop */}
               <div style={{
@@ -99,18 +98,11 @@ export default function Hero({ onOpenBooking }) {
                 pointerEvents: 'none'
               }} />
 
-              <div className="img-tint-gold" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 15px 35px rgba(0,0,0,0.12)', zIndex: 1 }}>
+              <div className="img-tint-gold hero-img-wrapper" style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 15px 35px rgba(0,0,0,0.12)', zIndex: 1, width: '100%' }}>
                 <img 
                   src="/Collections/Hero Sec.PNG" 
                   alt="Saru's Fashion Studio Hero Collection" 
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: 'calc(100vh - 125px)',
-                    height: 'auto',
-                    width: 'auto',
-                    objectFit: 'contain',
-                    display: 'block'
-                  }}
+                  className="hero-img-responsive"
                 />
               </div>
             </div>
@@ -120,9 +112,24 @@ export default function Hero({ onOpenBooking }) {
       </div>
 
       <style>{`
+        .hero-img-responsive {
+          width: 100%;
+          height: auto;
+          max-height: 380px;
+          object-fit: cover;
+          display: block;
+        }
+
         @media (min-width: 992px) {
           .hero-text-col { grid-column: span 6 !important; }
           .hero-visual-col { grid-column: span 6 !important; }
+          .hero-img-container { max-height: calc(100vh - 125px) !important; }
+          .hero-img-responsive {
+            max-width: 100% !important;
+            max-height: calc(100vh - 125px) !important;
+            object-fit: contain !important;
+            width: auto !important;
+          }
         }
       `}</style>
     </section>

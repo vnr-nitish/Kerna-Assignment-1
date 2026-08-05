@@ -102,7 +102,7 @@ export default function Navbar({ onOpenBooking }) {
           </div>
         </a>
 
-        {/* 2. Desktop Pill Navigation Bar (Desktop Only > 1140px) */}
+        {/* 2. Desktop Pill Navigation Bar (Desktop Only > 1024px) */}
         <div 
           className="desktop-pill-nav"
           style={{
@@ -167,14 +167,14 @@ export default function Navbar({ onOpenBooking }) {
           </button>
         </div>
 
-        {/* 3. Mobile Header Actions (Mobile Devices & Tablets < 1140px) */}
+        {/* 3. Mobile Header Actions (Mobile Devices & Tablets < 1024px) */}
         <div className="mobile-header-actions" style={{ alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <button 
             onClick={onOpenBooking} 
             className="btn btn-gold" 
             style={{ 
-              padding: '0.4rem 0.75rem', 
-              fontSize: '0.76rem',
+              padding: '0.42rem 0.8rem', 
+              fontSize: '0.78rem',
               whiteSpace: 'nowrap'
             }}
           >
@@ -186,8 +186,8 @@ export default function Navbar({ onOpenBooking }) {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
             style={{ 
               color: 'var(--text-primary)', 
-              width: '38px',
-              height: '38px',
+              width: '40px',
+              height: '40px',
               padding: 0,
               display: 'flex',
               alignItems: 'center',
@@ -201,7 +201,7 @@ export default function Navbar({ onOpenBooking }) {
             }}
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
@@ -324,7 +324,7 @@ export default function Navbar({ onOpenBooking }) {
         .desktop-pill-nav { display: none !important; }
         .mobile-header-actions { display: flex !important; }
 
-        @media (min-width: 1140px) {
+        @media (min-width: 1024px) {
           .desktop-pill-nav { display: flex !important; }
           .mobile-header-actions { display: none !important; }
         }

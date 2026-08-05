@@ -82,7 +82,7 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
               <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold-dark)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '700', marginBottom: '0.75rem' }}>
                 Step 1: Choose Core Service
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
+              <div className="estimator-step-grid">
                 {SILHOUETTES.map((sil) => (
                   <button
                     key={sil.id}
@@ -109,7 +109,7 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
               <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold-dark)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '700', marginBottom: '0.75rem' }}>
                 Step 2: Fabric Selection
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
+              <div className="estimator-step-grid">
                 {FABRICS.map((fab) => (
                   <button
                     key={fab.id}
@@ -339,6 +339,25 @@ export default function StyleEstimator({ onLaunchCustomBooking }) {
       </div>
 
       <style>{`
+        .estimator-step-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 0.75rem;
+        }
+
+        @media (max-width: 640px) {
+          .estimator-step-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.5rem !important;
+          }
+          .estimator-step-grid button {
+            padding: 0.65rem 0.5rem !important;
+          }
+          .estimator-step-grid button div {
+            font-size: 0.82rem !important;
+          }
+        }
+
         @media (min-width: 992px) {
           .estimator-ctrls { grid-column: span 7 !important; }
           .estimator-summary { grid-column: span 5 !important; }

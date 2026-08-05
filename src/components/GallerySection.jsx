@@ -158,6 +158,7 @@ export default function GallerySection({ onOpenBooking }) {
               onClick={() => {
                 setFilter(cat.id);
                 setSelectedIndex(null);
+                setShowAllMobile(false);
               }}
               style={{
                 padding: '0.5rem 1.25rem',
@@ -178,7 +179,7 @@ export default function GallerySection({ onOpenBooking }) {
 
         {/* Collections Grid */}
         <div className="gallery-responsive-grid">
-          {filteredItems.map((item, idx) => (
+          {(showAllMobile ? filteredItems : filteredItems.slice(0, 12)).map((item, idx) => (
             <motion.div 
               key={item.id}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -186,14 +187,14 @@ export default function GallerySection({ onOpenBooking }) {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
               whileHover={{ y: -6 }}
-              className="glass-panel"
+              className={`glass-panel ${idx >= 4 ? 'mobile-hidden-item' : ''}`}
               style={{
                 overflow: 'hidden',
                 borderRadius: 'var(--radius-md)',
                 cursor: 'pointer',
                 position: 'relative'
               }}
-              onClick={() => setSelectedIndex(idx)}
+              onClick={() => setSelectedIndex(filteredItems.findIndex(i => i.id === item.id))}
             >
               <div className="img-tint-gold" style={{ width: '100%', aspectRatio: '3 / 4', overflow: 'hidden', position: 'relative' }}>
                 <img 
@@ -243,16 +244,59 @@ export default function GallerySection({ onOpenBooking }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: 'var(--accent-gold-dark)',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
                 }}>
-                  <Eye size={16} />
+                  <Maximize2 size={16} />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Mobile "View All Collections" Button */}
+        {!showAllMobile && filteredItems.length > 4 && (
+          <div className="mobile-view-all-container" style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+            <button 
+              onClick={() => setShowAllMobile(true)}
+              style={{
+                background: '#ffffff',
+                border: '1px solid var(--border-gold)',
+                color: 'var(--accent-gold-dark)',
+                padding: '0.75rem 1.5rem',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                borderRadius: '9999px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.06)',
+                cursor: 'pointer'
+              }}
+            >
+              Explore All {filteredItems.length} Collections →
+            </button>
+          </div>
+        )}
       </div>
+
+      <style>{`
+        .gallery-responsive-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .mobile-view-all-container { display: none; }
+
+        @media (max-width: 640px) {
+          .gallery-responsive-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.75rem !important;
+          }
+          .gallery-responsive-grid h3 {
+            font-size: 0.88rem !important;
+          }
+          ${!showAllMobile ? `.mobile-hidden-item { display: none !important; }` : ''}
+          .mobile-view-all-container { display: block !important; }
+        }
+      `}</style>
 
       {/* Clean Uncropped Lightbox Photo Viewer with In-Box Navigation Arrows */}
       {activeItem && (
