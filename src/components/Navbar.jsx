@@ -39,6 +39,18 @@ export default function Navbar({ onOpenBooking }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const [indicatorLeft, setIndicatorLeft] = useState(0);
   const [indicatorWidth, setIndicatorWidth] = useState(0);
 
@@ -213,25 +225,27 @@ export default function Navbar({ onOpenBooking }) {
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
+          className="mobile-menu-drawer"
           style={{
             position: 'fixed',
-            top: '65px',
+            inset: 0,
             left: 0,
             right: 0,
             bottom: 0,
             background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            padding: '1.75rem 1.5rem',
+            padding: 'calc(5.25rem + env(safe-area-inset-top)) 1.25rem calc(1.5rem + env(safe-area-inset-bottom))',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between',
+            justifyContent: 'flex-start',
+            gap: '1.5rem',
             boxShadow: '0 25px 60px rgba(0,0,0,0.15)',
-            zIndex: 999,
+            zIndex: 2005,
             overflowY: 'auto'
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', minHeight: 0 }}>
             <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--accent-gold-dark)', fontWeight: '700', marginBottom: '0.5rem' }}>
               Studio Navigation
             </div>
@@ -268,7 +282,7 @@ export default function Navbar({ onOpenBooking }) {
             ))}
           </div>
           
-          <div style={{ paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          <div style={{ paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '0.85rem', flexShrink: 0 }}>
             <a 
               href="tel:+919989017733" 
               style={{ 
@@ -341,6 +355,10 @@ export default function Navbar({ onOpenBooking }) {
 
             .container {
               gap: 0.65rem !important;
+            }
+
+            .mobile-menu-drawer {
+              padding-top: calc(4.75rem + env(safe-area-inset-top)) !important;
             }
           }
         }
